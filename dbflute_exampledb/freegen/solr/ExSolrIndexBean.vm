@@ -1,0 +1,14 @@
+package ${request.package}.index.ex;
+
+import ${request.package}.index.bs.${request.tableMap.baseIndexBeanClassName};
+
+/**
+ * Solr Index登録用Bean
+ * string, tint, tlong, tdate, text_ja, text_cjkのみに対応しています
+ *
+ * 独自メソッドはここに追加してください
+ * @author FreeGen
+ */
+public class ${tableMap.extendedIndexBeanClassName} extends ${tableMap.baseIndexBeanClassName} {
+
+}

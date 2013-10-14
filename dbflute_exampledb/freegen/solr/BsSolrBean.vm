@@ -1,0 +1,61 @@
+package ${request.package}.bean.bs;
+
+import java.io.Serializable;
+import java.util.Date;
+import jp.bizreach.example.solr.base.AbstractSolrBean;
+import org.apache.solr.client.solrj.beans.Field;
+
+/**
+ * Solr検索結果保存用BeanのBaseクラス
+ * string, tint, tlong, tdate, tdouble, text_ja, text_cjkのみに対応しています
+ * @author FreeGen
+ * @author nishiyama
+ */
+public class ${tableMap.baseBeanClassName} extends AbstractSolrBean implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
+#foreach ($column in $request.columnList)
+#if(${column.stored})
+    /** ${column.name} (${column.nativeType}) */
+    @Field("${column.name}")
+    protected ${column.type} ${column.uncapCamelName};
+
+#end
+#end
+    // ===================================================================================
+    //                                                                            Accessor
+    //                                                                            ========
+#foreach ($column in $request.columnList)
+#if(${column.stored})
+    public ${column.type} get${column.capCamelName}() {
+        return ${column.uncapCamelName};
+    }
+
+    public void set${column.capCamelName}(${column.type} value) {
+        ${column.uncapCamelName} = value;
+    }
+
+#end
+#end
+
+    // ===================================================================================
+    //                                                                            toString
+    //                                                                            ========
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[");
+#foreach ($column in $request.columnList)
+#if(${column.stored})
+		sb.append("${column.uncapCamelName}").append("=").append(this.get${column.capCamelName}()).append(",");
+#end
+#end
+		sb.append("]");
+		return sb.toString();
+	}
+	
+}

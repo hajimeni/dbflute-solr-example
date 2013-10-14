@@ -1,0 +1,16 @@
+package ${request.package}.condition.ex;
+
+import java.util.List;
+
+import jp.bizreach.example.solr.condition.bs.Bs${tableMap.baseSchemaName}SolrConditionBean;
+
+/**
+ * Solr検索条件生成用のConditionBeanクラス
+ * string, tint, tlong, tdate, tdouble, text_ja, text_cjkのみに対応しています
+ *
+ * 独自メソッドはここに追加してください。
+ * @author FreeGen
+ */
+public class ${tableMap.baseSchemaName}SolrConditionBean extends Bs${tableMap.baseSchemaName}SolrConditionBean {
+
+}

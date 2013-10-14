@@ -1,0 +1,13 @@
+package ${request.package}.specify.ex;
+
+import jp.bizreach.example.solr.specify.bs.Bs${tableMap.baseSchemaName}SolrSpecifyBean;
+
+/**
+ * Solr検索のフィールド絞り込み保存用クラス
+ * string, tint, tlong, tdate, tdouble, text_ja, text_cjkのみに対応しています
+ * @author FreeGen
+ * @author nishiyama
+ */
+public class ${tableMap.baseSchemaName}SolrSpecifyBean extends Bs${tableMap.baseSchemaName}SolrSpecifyBean {
+
+}

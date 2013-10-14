@@ -1,0 +1,3987 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>exampledb history</title>
+	<link rel="stylesheet" type="text/css" href="./style-history.css" />
+</head>
+
+<body>
+<h1>History for exampledb (mysql)</h1>
+
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2013/10/14 16:06:24</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4><a href="./schema-exampledb.html#member">MEMBER</a></h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">??:&nbsp;????????????????????????????<br />???????????????????????????????<br />?????????????????????one-to-one????????????&nbsp;-&gt;&nbsp;会員:&nbsp;会員のプロフィールやアカウントなどの基本情報を保持する。<br />基本的に物理削除はなく、退会したらステータスが退会会員になる。<br />ライフサイクルやカテゴリの違う会員情報は、one-to-oneなどの関連テーブルにて。</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_ID</dt>
+				<dd><span>Comment</span>??ID:&nbsp;???????ID??????????????????<br />???ID????????????DBMS????????&nbsp;-&gt;&nbsp;会員ID:&nbsp;会員を識別するID。連番として基本的に自動採番される。<br />（会員IDだけに限らず）採番方法はDBMSによって変わる。</dd>
+				<dt>MEMBER_NAME</dt>
+				<dd><span>Comment</span>????:&nbsp;????????????&nbsp;-&gt;&nbsp;会員名称:&nbsp;会員のフルネームの名称。</dd>
+				<dt>MEMBER_ACCOUNT</dt>
+				<dd><span>Comment</span>???????:&nbsp;??????????????????NO?&nbsp;-&gt;&nbsp;会員アカウント:&nbsp;会員がログイン時に利用するアカウントNO。</dd>
+				<dt>MEMBER_STATUS_CODE</dt>
+				<dd><span>Comment</span>??????????&nbsp;-&gt;&nbsp;会員ステータスコード</dd>
+				<dt>FORMALIZED_DATETIME</dt>
+				<dd><span>Comment</span>??????:&nbsp;???????????????????????????<br />???????null?&nbsp;-&gt;&nbsp;正式会員日時:&nbsp;会員が正式に確定した日時。一度確定したら更新されない。<br />仮会員のときはnull。</dd>
+				<dt>BIRTHDATE</dt>
+				<dd><span>Comment</span>????:&nbsp;?????????????????????????&nbsp;-&gt;&nbsp;生年月日:&nbsp;必須項目ではないので、このデータがない会員もいる。</dd>
+				<dt>REGISTER_DATETIME</dt>
+				<dd><span>Comment</span>????:&nbsp;??????????????????????&nbsp;-&gt;&nbsp;登録日時:&nbsp;レコードが登録された日時。共通カラムの一つ。</dd>
+				<dt>REGISTER_USER</dt>
+				<dd><span>Comment</span>?????:&nbsp;??????????????????????&nbsp;-&gt;&nbsp;登録ユーザ:&nbsp;レコードを登録したユーザ。共通カラムの一つ。</dd>
+				<dt>UPDATE_DATETIME</dt>
+				<dd><span>Comment</span>????:&nbsp;???????????????????????????&nbsp;-&gt;&nbsp;更新日時:&nbsp;レコードが（最後に）更新された日時。共通カラムの一つ。</dd>
+				<dt>UPDATE_USER</dt>
+				<dd><span>Comment</span>?????:&nbsp;?????????????&nbsp;-&gt;&nbsp;更新ユーザ:&nbsp;レコードを更新したユーザ。</dd>
+				<dt>VERSION_NO</dt>
+				<dd><span>Comment</span>?????NO:&nbsp;?????????????NO?<br />?????????????????????????&nbsp;-&gt;&nbsp;バージョンNO:&nbsp;レコードのバージョンを示すNO。<br />更新回数と等しく、主に排他制御のために利用される。</dd>
+			</dl>
+		</div>
+		<h4><a href="./schema-exampledb.html#member_address">MEMBER_ADDRESS</a></h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">??????:&nbsp;????????????<br />????????????????????&nbsp;-&gt;&nbsp;会員住所情報:&nbsp;会員の住所に関する情報。<br />同時に有効期間ごとに履歴管理されている。</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_ADDRESS_ID</dt>
+				<dd><span>Comment</span>????ID:&nbsp;?????????ID?<br />???????????????????FK?????&nbsp;-&gt;&nbsp;会員住所ID:&nbsp;会員住所を識別するID。<br />履歴分も含むテーブルなので、これ自体はFKではない。</dd>
+				<dt>MEMBER_ID</dt>
+				<dd><span>Comment</span>??ID:&nbsp;???????ID?<br />??????????????????????????&nbsp;-&gt;&nbsp;会員ID:&nbsp;会員を参照するID。<br />履歴分を含むため、これだけではユニークにはならない。</dd>
+				<dt>VALID_BEGIN_DATE</dt>
+				<dd><span>Comment</span>?????:&nbsp;????????????????<br />????????????????????&nbsp;-&gt;&nbsp;有効開始日:&nbsp;一つの有効期間の開始を示す日付。<br />前の有効終了日の次の日の値が格納される。</dd>
+				<dt>VALID_END_DATE</dt>
+				<dd><span>Comment</span>?????:&nbsp;?????????<br />????????????????????<br />????????????????&nbsp;9999/12/31&nbsp;????&nbsp;-&gt;&nbsp;有効終了日:&nbsp;有効期間の終了日。<br />次の有効開始日の一日前の値が格納される。<br />ただし、次の有効期間がない場合は&nbsp;9999/12/31&nbsp;となる。</dd>
+				<dt>ADDRESS</dt>
+				<dd><span>Comment</span>??:&nbsp;??????&nbsp;-&gt;&nbsp;住所:&nbsp;まるごと住所</dd>
+				<dt>REGION_ID</dt>
+				<dd><span>Comment</span>??ID:&nbsp;???????ID?<br />?????????????????????????&nbsp;-&gt;&nbsp;地域ID:&nbsp;地域を参照するID。<br />ここでは特に住所の内容と連動しているわけではない。</dd>
+			</dl>
+		</div>
+		<h4><a href="./schema-exampledb.html#member_login">MEMBER_LOGIN</a></h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">????????:&nbsp;?????????????????????&nbsp;-&gt;&nbsp;会員ログイン情報:&nbsp;ログインするたびに登録されるログイン履歴。</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_LOGIN_ID</dt>
+				<dd><span>Comment</span>??????ID&nbsp;-&gt;&nbsp;会員ログインID</dd>
+				<dt>MEMBER_ID</dt>
+				<dd><span>Comment</span>??ID&nbsp;-&gt;&nbsp;会員ID</dd>
+				<dt>LOGIN_DATETIME</dt>
+				<dd><span>Comment</span>??????:&nbsp;????????????&nbsp;-&gt;&nbsp;ログイン日時:&nbsp;ログインした瞬間の日時。</dd>
+				<dt>MOBILE_LOGIN_FLG</dt>
+				<dd><span>Comment</span>???????????:&nbsp;?????????????????&nbsp;-&gt;&nbsp;モバイルログインフラグ:&nbsp;モバイル機器からのログインか否か。</dd>
+				<dt>LOGIN_MEMBER_STATUS_CODE</dt>
+				<dd><span>Comment</span>??????????????:&nbsp;?????????????&nbsp;-&gt;&nbsp;ログイン会員ステータスコード:&nbsp;ログイン時の会員ステータス</dd>
+			</dl>
+		</div>
+		<h4><a href="./schema-exampledb.html#member_security">MEMBER_SECURITY</a></h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">??????????:&nbsp;????&nbsp;one-to-one&nbsp;?????????????????????????&nbsp;-&gt;&nbsp;会員セキュリティ情報:&nbsp;会員とは&nbsp;one-to-one&nbsp;で、会員一人につき必ず一つのセキュリティ情報がある</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_ID</dt>
+				<dd><span>Comment</span>??ID:&nbsp;????&nbsp;one-to-one&nbsp;????????FK????&nbsp;-&gt;&nbsp;会員ID:&nbsp;そのまま&nbsp;one-to-one&nbsp;を構成するためのFKとなる。</dd>
+				<dt>LOGIN_PASSWORD</dt>
+				<dd><span>Comment</span>?????????:&nbsp;????????????????<br />?????????Example????????????????&nbsp;-&gt;&nbsp;ログインパスワード:&nbsp;ログイン時に利用するパスワード。<br />本当は良くないが、Exampleなのでひとまず暗号化していない。</dd>
+				<dt>REMINDER_QUESTION</dt>
+				<dd><span>Comment</span>???????:&nbsp;????????????????????????????&nbsp;-&gt;&nbsp;リマインダ質問:&nbsp;パスワードを忘れた際のリマインダ機能における質問の内容。</dd>
+				<dt>REMINDER_ANSWER</dt>
+				<dd><span>Comment</span>???????:&nbsp;????????????????????????????&nbsp;-&gt;&nbsp;リマインダ回答:&nbsp;パスワードを忘れた際のリマインダ機能における質問の答え。</dd>
+				<dt>REMINDER_USE_COUNT</dt>
+				<dd><span>Comment</span>?????????:&nbsp;?????????????<br />????????????????<br />?????????????????&nbsp;-&gt;&nbsp;リマインダ利用回数:&nbsp;リマインダを利用した回数。<br />多いと忘れっぽい会員と言えるが、<br />そんなことを知ってもしょうがない。</dd>
+			</dl>
+		</div>
+		<h4><a href="./schema-exampledb.html#member_service">MEMBER_SERVICE</a></h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">??????:&nbsp;??????????????????????&nbsp;-&gt;&nbsp;会員サービス:&nbsp;会員のサービス情報（ポイントサービスなど）。</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_SERVICE_ID</dt>
+				<dd><span>Comment</span>??????ID:&nbsp;??????????????????ID??&nbsp;one-to-one&nbsp;????&nbsp;-&gt;&nbsp;会員サービスID:&nbsp;独立した主キーとなるが、実質的に会員IDとは&nbsp;one-to-one&nbsp;である。</dd>
+				<dt>MEMBER_ID</dt>
+				<dd><span>Comment</span>??ID:&nbsp;???????ID?????????????&nbsp;one-to-one&nbsp;?????&nbsp;-&gt;&nbsp;会員ID:&nbsp;会員を参照するID。ユニークなので、会員とは&nbsp;one-to-one&nbsp;の関係に。</dd>
+				<dt>SERVICE_POINT_COUNT</dt>
+				<dd><span>Comment</span>?????????:&nbsp;?????????????????????<br />?????????????????????????&nbsp;-&gt;&nbsp;サービスポイント数:&nbsp;会員が現在利用できるサービスポイントの数。<br />基本的に、購入時には増えてポイントを使ったら減る。</dd>
+				<dt>SERVICE_RANK_CODE</dt>
+				<dd><span>Comment</span>??????????:&nbsp;????????????????<br />???????????????????&nbsp;-&gt;&nbsp;サービスランクコード:&nbsp;サービスランクを参照するコード。<br />どんなランクがあるのかドキドキですね。</dd>
+			</dl>
+		</div>
+		<h4><a href="./schema-exampledb.html#member_status">MEMBER_STATUS</a></h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">???????&nbsp;-&gt;&nbsp;会員ステータス</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_STATUS_CODE</dt>
+				<dd><span>Comment</span>??????????:&nbsp;????????????????&nbsp;-&gt;&nbsp;会員ステータスコード:&nbsp;会員ステータスを識別するコード。</dd>
+				<dt>MEMBER_STATUS_NAME</dt>
+				<dd><span>Comment</span>?????????&nbsp;-&gt;&nbsp;会員ステータス名称</dd>
+				<dt>DESCRIPTION</dt>
+				<dd><span>Comment</span>??:&nbsp;???????????????<br />??????????????????????????&nbsp;-&gt;&nbsp;説明:&nbsp;会員ステータスそれぞれの説明。<br />気の利いた説明があるとディベロッパーがとても助かる。</dd>
+				<dt>DISPLAY_ORDER</dt>
+				<dd><span>Comment</span>???:&nbsp;UI??????????????NO?<br />????????????????????????????&nbsp;-&gt;&nbsp;表示順:&nbsp;UI上のステータスの表示順を示すNO。<br />並べるときは、このカラムに対して昇順のソート条件にする。</dd>
+			</dl>
+		</div>
+		<h4><a href="./schema-exampledb.html#member_withdrawal">MEMBER_WITHDRAWAL</a></h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">??????:&nbsp;?????????????????<br />???????????????&nbsp;-&gt;&nbsp;会員退会情報:&nbsp;退会会員の退会に関する詳細な情報。<br />退会会員のみデータが存在する。</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>WITHDRAWAL_REASON_CODE</dt>
+				<dd><span>Comment</span>???????:&nbsp;?????????????????<br />??????????????????????????&nbsp;-&gt;&nbsp;退会理由コード:&nbsp;退会した定型理由を参照するコード。<br />何も言わずに退会する会員もいるので必須項目ではない。</dd>
+				<dt>WITHDRAWAL_REASON_INPUT_TEXT</dt>
+				<dd><span>Comment</span>??????????:&nbsp;?????????????????????<br />?????????????????&nbsp;-&gt;&nbsp;退会理由入力テキスト:&nbsp;会員がフリーテキストで入力できる退会理由。<br />もう言いたいこと言ってもらう感じ。</dd>
+				<dt>WITHDRAWAL_DATETIME</dt>
+				<dd><span>Comment</span>????:&nbsp;??????????<br />??????????????one-to-one????????&nbsp;-&gt;&nbsp;退会日時:&nbsp;退会した瞬間の日時。<br />正式会員日時と違い、こっちはone-to-oneの別テーブルで。</dd>
+			</dl>
+		</div>
+		<h4><a href="./schema-exampledb.html#product">PRODUCT</a></h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">??:&nbsp;??????????????<br />?????????????????????????????????&nbsp;-&gt;&nbsp;商品:&nbsp;会員へ販売する商品のマスタ。<br />販売可能なものだけでなく、生産中止や販売中止などの商品も含まれる。</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>PRODUCT_ID</dt>
+				<dd><span>Comment</span>??ID&nbsp;-&gt;&nbsp;商品ID</dd>
+				<dt>PRODUCT_NAME</dt>
+				<dd><span>Comment</span>????&nbsp;-&gt;&nbsp;商品名称</dd>
+				<dt>PRODUCT_HANDLE_CODE</dt>
+				<dd><span>Comment</span>?????????:&nbsp;???????????????&nbsp;-&gt;&nbsp;商品ハンドルコード:&nbsp;商品を識別する業務上のコード。</dd>
+				<dt>REGULAR_PRICE</dt>
+				<dd><span>Comment</span>??:&nbsp;????????????????&nbsp;-&gt;&nbsp;定価:&nbsp;特に割引などがない場合の販売価格</dd>
+			</dl>
+		</div>
+		<h4><a href="./schema-exampledb.html#product_category">PRODUCT_CATEGORY</a></h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">??????:&nbsp;????????????????<br />??????????????&nbsp;-&gt;&nbsp;商品カテゴリ:&nbsp;商品のカテゴリを表現するマスタ。<br />自己参照の階層になっている。</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>PRODUCT_CATEGORY_CODE</dt>
+				<dd><span>Comment</span>?????????&nbsp;-&gt;&nbsp;商品カテゴリコード</dd>
+				<dt>PRODUCT_CATEGORY_NAME</dt>
+				<dd><span>Comment</span>????????&nbsp;-&gt;&nbsp;商品カテゴリ名称</dd>
+				<dt>PARENT_CATEGORY_CODE</dt>
+				<dd><span>Comment</span>????????:&nbsp;?????????????&nbsp;-&gt;&nbsp;親カテゴリコード:&nbsp;最上位の場合はデータなし。</dd>
+			</dl>
+		</div>
+		<h4><a href="./schema-exampledb.html#product_status">PRODUCT_STATUS</a></h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">???????&nbsp;-&gt;&nbsp;商品ステータス</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>PRODUCT_STATUS_CODE</dt>
+				<dd><span>Comment</span>??????????&nbsp;-&gt;&nbsp;商品ステータスコード</dd>
+				<dt>PRODUCT_STATUS_NAME</dt>
+				<dd><span>Comment</span>?????????&nbsp;-&gt;&nbsp;商品ステータス名称</dd>
+				<dt>DISPLAY_ORDER</dt>
+				<dd><span>Comment</span>???&nbsp;-&gt;&nbsp;表示順</dd>
+			</dl>
+		</div>
+		<h4><a href="./schema-exampledb.html#purchase">PURCHASE</a></h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">??:&nbsp;????????????????????<br />???????????????????????&nbsp;-&gt;&nbsp;購入:&nbsp;一つの商品に対する一回の購入を表現する。<br />一回の購入で一つの商品を複数個買うこともある。</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>PURCHASE_ID</dt>
+				<dd><span>Comment</span>??ID:&nbsp;??&nbsp;-&gt;&nbsp;購入ID:&nbsp;連番</dd>
+				<dt>MEMBER_ID</dt>
+				<dd><span>Comment</span>??ID:&nbsp;???????ID?<br />???????????????????????????&nbsp;-&gt;&nbsp;会員ID:&nbsp;会員を参照するID。<br />購入を識別する自然キー（複合ユニーク制約）の筆頭要素。</dd>
+				<dt>PRODUCT_ID</dt>
+				<dd><span>Comment</span>??ID:&nbsp;???????ID?&nbsp;-&gt;&nbsp;商品ID:&nbsp;商品を参照するID。</dd>
+				<dt>PURCHASE_DATETIME</dt>
+				<dd><span>Comment</span>????:&nbsp;??????????&nbsp;-&gt;&nbsp;購入日時:&nbsp;購入した瞬間の日時。</dd>
+				<dt>PURCHASE_COUNT</dt>
+				<dd><span>Comment</span>????:&nbsp;?????????????????????&nbsp;-&gt;&nbsp;購入数量:&nbsp;購入した商品の（一回の購入における）数量。</dd>
+				<dt>PURCHASE_PRICE</dt>
+				<dd><span>Comment</span>????:&nbsp;???????????????????????????<br />????????????????????????<br />???????????????????????????&nbsp;-&gt;&nbsp;購入価格:&nbsp;購入によって実際に会員が支払った（支払う予定の）価格。<br />基本は商品の定価に購入数量を掛けたものになるが、<br />ポイント利用や割引があったりと必ずしもそうはならない。</dd>
+				<dt>PAYMENT_COMPLETE_FLG</dt>
+				<dd><span>Comment</span>???????:&nbsp;???????????????????????&nbsp;-&gt;&nbsp;支払完了フラグ:&nbsp;この購入に関しての支払いが完了しているか否か。</dd>
+			</dl>
+		</div>
+		<h4><a href="./schema-exampledb.html#region">REGION</a></h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">??:&nbsp;???????????????<br />????????????????&nbsp;-&gt;&nbsp;地域:&nbsp;主に会員の住所に対応する地域。<br />かなりざっくりした感じではある。</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>REGION_ID</dt>
+				<dd><span>Comment</span>??ID&nbsp;-&gt;&nbsp;地域ID</dd>
+				<dt>REGION_NAME</dt>
+				<dd><span>Comment</span>????&nbsp;-&gt;&nbsp;地域名称</dd>
+			</dl>
+		</div>
+		<h4><a href="./schema-exampledb.html#service_rank">SERVICE_RANK</a></h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">???????:&nbsp;???????????????????<br />??????????????&nbsp;-&gt;&nbsp;サービスランク:&nbsp;会員のサービスレベルを表現するランク。<br />（ゴールドとかプラチナとか）</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>SERVICE_RANK_CODE</dt>
+				<dd><span>Comment</span>??????????:&nbsp;????????????????&nbsp;-&gt;&nbsp;サービスランクコード:&nbsp;サービスランクを識別するコード。</dd>
+				<dt>SERVICE_RANK_NAME</dt>
+				<dd><span>Comment</span>?????????:&nbsp;???????????<br />??????????????????????????&nbsp;-&gt;&nbsp;サービスランク名称:&nbsp;サービスランクの名称。<br />（ゴールドとかプラチナとか基本的には威厳のある名前）</dd>
+				<dt>SERVICE_POINT_INCIDENCE</dt>
+				<dd><span>Comment</span>???????????:&nbsp;??????????????????<br />?????????????????????&nbsp;-&gt;&nbsp;サービスポイント発生率:&nbsp;購入ごとのサービスポイントの発生率。<br />購入価格にこの値をかけた数が発生ポイント。</dd>
+				<dt>NEW_ACCEPTABLE_FLG</dt>
+				<dd><span>Comment</span>???????????:&nbsp;??????????????????????&nbsp;-&gt;&nbsp;新規受け入れ可能フラグ:&nbsp;このランクへの新規受け入れができるかどうか。</dd>
+			</dl>
+		</div>
+		<h4><a href="./schema-exampledb.html#withdrawal_reason">WITHDRAWAL_REASON</a></h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">????:&nbsp;????????????????????&nbsp;-&gt;&nbsp;退会理由:&nbsp;会員に選ばせる定型的な退会理由のマスタ。</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>WITHDRAWAL_REASON_CODE</dt>
+				<dd><span>Comment</span>???????&nbsp;-&gt;&nbsp;退会理由コード</dd>
+				<dt>WITHDRAWAL_REASON_TEXT</dt>
+				<dd><span>Comment</span>????????:&nbsp;???????????????????????????<br />?????UI???????????????????&nbsp;-&gt;&nbsp;退会理由テキスト:&nbsp;退会理由の内容。テキスト形式なので目いっぱい書けるが、<br />そうするとUI側できれいに見せるのが大変でしょうね。</dd>
+				<dt>DISPLAY_ORDER</dt>
+				<dd><span>Comment</span>???&nbsp;-&gt;&nbsp;表示順</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2013/10/14 15:57:43</h2>
+	<p class="tablecount"><span class="dt">table count: </span>78&nbsp;-&gt;&nbsp;15</p>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">会員:&nbsp;会員のプロフィールやアカウントなどの基本情報を保持する。<br />基本的に物理削除はなく、退会したらステータスが退会会員になる。<br />ライフサイクルやカテゴリの違う会員情報は、one-to-oneなどの関連テーブルにて。&nbsp;-&gt;&nbsp;??:&nbsp;????????????????????????????<br />???????????????????????????????<br />?????????????????????one-to-one????????????</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_ID</dt>
+				<dd><span>Comment</span>会員ID:&nbsp;会員を識別するID。連番として基本的に自動採番される。<br />（会員IDだけに限らず）採番方法はDBMSによって変わる。&nbsp;-&gt;&nbsp;??ID:&nbsp;???????ID??????????????????<br />???ID????????????DBMS????????</dd>
+				<dt>MEMBER_NAME</dt>
+				<dd><span>Comment</span>会員名称:&nbsp;会員のフルネームの名称。&nbsp;-&gt;&nbsp;????:&nbsp;????????????</dd>
+				<dt>MEMBER_ACCOUNT</dt>
+				<dd><span>Comment</span>会員アカウント:&nbsp;会員がログイン時に利用するアカウントNO。&nbsp;-&gt;&nbsp;???????:&nbsp;??????????????????NO?</dd>
+				<dt>MEMBER_STATUS_CODE</dt>
+				<dd><span>Comment</span>会員ステータスコード&nbsp;-&gt;&nbsp;??????????</dd>
+				<dt>FORMALIZED_DATETIME</dt>
+				<dd><span>Comment</span>正式会員日時:&nbsp;会員が正式に確定した日時。一度確定したら更新されない。<br />仮会員のときはnull。&nbsp;-&gt;&nbsp;??????:&nbsp;???????????????????????????<br />???????null?</dd>
+				<dt>BIRTHDATE</dt>
+				<dd><span>Comment</span>生年月日:&nbsp;必須項目ではないので、このデータがない会員もいる。&nbsp;-&gt;&nbsp;????:&nbsp;?????????????????????????</dd>
+				<dt>REGISTER_DATETIME</dt>
+				<dd><span>Comment</span>登録日時:&nbsp;レコードが登録された日時。共通カラムの一つ。&nbsp;-&gt;&nbsp;????:&nbsp;??????????????????????</dd>
+				<dt>REGISTER_USER</dt>
+				<dd><span>Comment</span>登録ユーザ:&nbsp;レコードを登録したユーザ。共通カラムの一つ。&nbsp;-&gt;&nbsp;?????:&nbsp;??????????????????????</dd>
+				<dt>UPDATE_DATETIME</dt>
+				<dd><span>Comment</span>更新日時:&nbsp;レコードが（最後に）更新された日時。共通カラムの一つ。&nbsp;-&gt;&nbsp;????:&nbsp;???????????????????????????</dd>
+				<dt>UPDATE_USER</dt>
+				<dd><span>Comment</span>更新ユーザ:&nbsp;レコードを更新したユーザ。&nbsp;-&gt;&nbsp;?????:&nbsp;?????????????</dd>
+				<dt>VERSION_NO</dt>
+				<dd><span>Comment</span>バージョンNO:&nbsp;レコードのバージョンを示すNO。<br />更新回数と等しく、主に排他制御のために利用される。&nbsp;-&gt;&nbsp;?????NO:&nbsp;?????????????NO?<br />?????????????????????????</dd>
+			</dl>
+		</div>
+		<h4>MEMBER_ADDRESS</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">会員住所情報:&nbsp;会員の住所に関する情報。<br />同時に有効期間ごとに履歴管理されている。&nbsp;-&gt;&nbsp;??????:&nbsp;????????????<br />????????????????????</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_ADDRESS_ID</dt>
+				<dd><span>Comment</span>会員住所ID:&nbsp;会員住所を識別するID。<br />履歴分も含むテーブルなので、これ自体はFKではない。&nbsp;-&gt;&nbsp;????ID:&nbsp;?????????ID?<br />???????????????????FK?????</dd>
+				<dt>MEMBER_ID</dt>
+				<dd><span>Comment</span>会員ID:&nbsp;会員を参照するID。<br />履歴分を含むため、これだけではユニークにはならない。&nbsp;-&gt;&nbsp;??ID:&nbsp;???????ID?<br />??????????????????????????</dd>
+				<dt>VALID_BEGIN_DATE</dt>
+				<dd><span>Comment</span>有効開始日:&nbsp;一つの有効期間の開始を示す日付。<br />前の有効終了日の次の日の値が格納される。&nbsp;-&gt;&nbsp;?????:&nbsp;????????????????<br />????????????????????</dd>
+				<dt>VALID_END_DATE</dt>
+				<dd><span>Comment</span>有効終了日:&nbsp;有効期間の終了日。<br />次の有効開始日の一日前の値が格納される。<br />ただし、次の有効期間がない場合は&nbsp;9999/12/31&nbsp;となる。&nbsp;-&gt;&nbsp;?????:&nbsp;?????????<br />????????????????????<br />????????????????&nbsp;9999/12/31&nbsp;????</dd>
+				<dt>ADDRESS</dt>
+				<dd><span>Comment</span>住所:&nbsp;まるごと住所&nbsp;-&gt;&nbsp;??:&nbsp;??????</dd>
+				<dt>REGION_ID</dt>
+				<dd><span>Comment</span>地域ID:&nbsp;地域を参照するID。<br />ここでは特に住所の内容と連動しているわけではない。&nbsp;-&gt;&nbsp;??ID:&nbsp;???????ID?<br />?????????????????????????</dd>
+			</dl>
+		</div>
+		<h4>MEMBER_LOGIN</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">会員ログイン情報:&nbsp;ログインするたびに登録されるログイン履歴。&nbsp;-&gt;&nbsp;????????:&nbsp;?????????????????????</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_LOGIN_ID</dt>
+				<dd><span>Comment</span>会員ログインID&nbsp;-&gt;&nbsp;??????ID</dd>
+				<dt>MEMBER_ID</dt>
+				<dd><span>Comment</span>会員ID&nbsp;-&gt;&nbsp;??ID</dd>
+				<dt>LOGIN_DATETIME</dt>
+				<dd><span>Comment</span>ログイン日時:&nbsp;ログインした瞬間の日時。&nbsp;-&gt;&nbsp;??????:&nbsp;????????????</dd>
+				<dt>MOBILE_LOGIN_FLG</dt>
+				<dd><span>Comment</span>モバイルログインフラグ:&nbsp;モバイル機器からのログインか否か。&nbsp;-&gt;&nbsp;???????????:&nbsp;?????????????????</dd>
+				<dt>LOGIN_MEMBER_STATUS_CODE</dt>
+				<dd><span>Comment</span>ログイン会員ステータスコード:&nbsp;ログイン時の会員ステータス&nbsp;-&gt;&nbsp;??????????????:&nbsp;?????????????</dd>
+			</dl>
+		</div>
+		<h4>MEMBER_SECURITY</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">会員セキュリティ情報:&nbsp;会員とは&nbsp;one-to-one&nbsp;で、会員一人につき必ず一つのセキュリティ情報がある&nbsp;-&gt;&nbsp;??????????:&nbsp;????&nbsp;one-to-one&nbsp;?????????????????????????</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_ID</dt>
+				<dd><span>Comment</span>会員ID:&nbsp;そのまま&nbsp;one-to-one&nbsp;を構成するためのFKとなる。&nbsp;-&gt;&nbsp;??ID:&nbsp;????&nbsp;one-to-one&nbsp;????????FK????</dd>
+				<dt>LOGIN_PASSWORD</dt>
+				<dd><span>Comment</span>ログインパスワード:&nbsp;ログイン時に利用するパスワード。<br />本当は良くないが、Exampleなのでひとまず暗号化していない。&nbsp;-&gt;&nbsp;?????????:&nbsp;????????????????<br />?????????Example????????????????</dd>
+				<dt>REMINDER_QUESTION</dt>
+				<dd><span>Comment</span>リマインダ質問:&nbsp;パスワードを忘れた際のリマインダ機能における質問の内容。&nbsp;-&gt;&nbsp;???????:&nbsp;????????????????????????????</dd>
+				<dt>REMINDER_ANSWER</dt>
+				<dd><span>Comment</span>リマインダ回答:&nbsp;パスワードを忘れた際のリマインダ機能における質問の答え。&nbsp;-&gt;&nbsp;???????:&nbsp;????????????????????????????</dd>
+				<dt>REMINDER_USE_COUNT</dt>
+				<dd><span>Comment</span>リマインダ利用回数:&nbsp;リマインダを利用した回数。<br />多いと忘れっぽい会員と言えるが、<br />そんなことを知ってもしょうがない。&nbsp;-&gt;&nbsp;?????????:&nbsp;?????????????<br />????????????????<br />?????????????????</dd>
+			</dl>
+		</div>
+		<h4>MEMBER_SERVICE</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">会員サービス:&nbsp;会員のサービス情報（ポイントサービスなど）。&nbsp;-&gt;&nbsp;??????:&nbsp;??????????????????????</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_SERVICE_ID</dt>
+				<dd><span>Comment</span>会員サービスID:&nbsp;独立した主キーとなるが、実質的に会員IDとは&nbsp;one-to-one&nbsp;である。&nbsp;-&gt;&nbsp;??????ID:&nbsp;??????????????????ID??&nbsp;one-to-one&nbsp;????</dd>
+				<dt>MEMBER_ID</dt>
+				<dd><span>Comment</span>会員ID:&nbsp;会員を参照するID。ユニークなので、会員とは&nbsp;one-to-one&nbsp;の関係に。&nbsp;-&gt;&nbsp;??ID:&nbsp;???????ID?????????????&nbsp;one-to-one&nbsp;?????</dd>
+				<dt>SERVICE_POINT_COUNT</dt>
+				<dd><span>Comment</span>サービスポイント数:&nbsp;会員が現在利用できるサービスポイントの数。<br />基本的に、購入時には増えてポイントを使ったら減る。&nbsp;-&gt;&nbsp;?????????:&nbsp;?????????????????????<br />?????????????????????????</dd>
+				<dt>SERVICE_RANK_CODE</dt>
+				<dd><span>Comment</span>サービスランクコード:&nbsp;サービスランクを参照するコード。<br />どんなランクがあるのかドキドキですね。&nbsp;-&gt;&nbsp;??????????:&nbsp;????????????????<br />???????????????????</dd>
+			</dl>
+		</div>
+		<h4>MEMBER_STATUS</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">会員ステータス&nbsp;-&gt;&nbsp;???????</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_STATUS_CODE</dt>
+				<dd><span>Comment</span>会員ステータスコード:&nbsp;会員ステータスを識別するコード。&nbsp;-&gt;&nbsp;??????????:&nbsp;????????????????</dd>
+				<dt>MEMBER_STATUS_NAME</dt>
+				<dd><span>Comment</span>会員ステータス名称&nbsp;-&gt;&nbsp;?????????</dd>
+				<dt>DESCRIPTION</dt>
+				<dd><span>Comment</span>説明:&nbsp;会員ステータスそれぞれの説明。<br />気の利いた説明があるとディベロッパーがとても助かる。&nbsp;-&gt;&nbsp;??:&nbsp;???????????????<br />??????????????????????????</dd>
+				<dt>DISPLAY_ORDER</dt>
+				<dd><span>Comment</span>表示順:&nbsp;UI上のステータスの表示順を示すNO。<br />並べるときは、このカラムに対して昇順のソート条件にする。&nbsp;-&gt;&nbsp;???:&nbsp;UI??????????????NO?<br />????????????????????????????</dd>
+			</dl>
+		</div>
+		<h4>MEMBER_WITHDRAWAL</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">会員退会情報:&nbsp;退会会員の退会に関する詳細な情報。<br />退会会員のみデータが存在する。&nbsp;-&gt;&nbsp;??????:&nbsp;?????????????????<br />???????????????</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>WITHDRAWAL_REASON_CODE</dt>
+				<dd><span>Comment</span>退会理由コード:&nbsp;退会した定型理由を参照するコード。<br />何も言わずに退会する会員もいるので必須項目ではない。&nbsp;-&gt;&nbsp;???????:&nbsp;?????????????????<br />??????????????????????????</dd>
+				<dt>WITHDRAWAL_REASON_INPUT_TEXT</dt>
+				<dd><span>Comment</span>退会理由入力テキスト:&nbsp;会員がフリーテキストで入力できる退会理由。<br />もう言いたいこと言ってもらう感じ。&nbsp;-&gt;&nbsp;??????????:&nbsp;?????????????????????<br />?????????????????</dd>
+				<dt>WITHDRAWAL_DATETIME</dt>
+				<dd><span>Comment</span>退会日時:&nbsp;退会した瞬間の日時。<br />正式会員日時と違い、こっちはone-to-oneの別テーブルで。&nbsp;-&gt;&nbsp;????:&nbsp;??????????<br />??????????????one-to-one????????</dd>
+			</dl>
+		</div>
+		<h4>PRODUCT</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">商品:&nbsp;会員へ販売する商品のマスタ。<br />販売可能なものだけでなく、生産中止や販売中止などの商品も含まれる。&nbsp;-&gt;&nbsp;??:&nbsp;??????????????<br />?????????????????????????????????</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>PRODUCT_ID</dt>
+				<dd><span>Comment</span>商品ID&nbsp;-&gt;&nbsp;??ID</dd>
+				<dt>PRODUCT_NAME</dt>
+				<dd><span>Comment</span>商品名称&nbsp;-&gt;&nbsp;????</dd>
+				<dt>PRODUCT_HANDLE_CODE</dt>
+				<dd><span>Comment</span>商品ハンドルコード:&nbsp;商品を識別する業務上のコード。&nbsp;-&gt;&nbsp;?????????:&nbsp;???????????????</dd>
+				<dt>REGULAR_PRICE</dt>
+				<dd><span>Comment</span>定価:&nbsp;特に割引などがない場合の販売価格&nbsp;-&gt;&nbsp;??:&nbsp;????????????????</dd>
+			</dl>
+		</div>
+		<h4>PRODUCT_CATEGORY</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">商品カテゴリ:&nbsp;商品のカテゴリを表現するマスタ。<br />自己参照の階層になっている。&nbsp;-&gt;&nbsp;??????:&nbsp;????????????????<br />??????????????</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>PRODUCT_CATEGORY_CODE</dt>
+				<dd><span>Comment</span>商品カテゴリコード&nbsp;-&gt;&nbsp;?????????</dd>
+				<dt>PRODUCT_CATEGORY_NAME</dt>
+				<dd><span>Comment</span>商品カテゴリ名称&nbsp;-&gt;&nbsp;????????</dd>
+				<dt>PARENT_CATEGORY_CODE</dt>
+				<dd><span>Comment</span>親カテゴリコード:&nbsp;最上位の場合はデータなし。&nbsp;-&gt;&nbsp;????????:&nbsp;?????????????</dd>
+			</dl>
+		</div>
+		<h4>PRODUCT_STATUS</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">商品ステータス&nbsp;-&gt;&nbsp;???????</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>PRODUCT_STATUS_CODE</dt>
+				<dd><span>Comment</span>商品ステータスコード&nbsp;-&gt;&nbsp;??????????</dd>
+				<dt>PRODUCT_STATUS_NAME</dt>
+				<dd><span>Comment</span>商品ステータス名称&nbsp;-&gt;&nbsp;?????????</dd>
+				<dt>DISPLAY_ORDER</dt>
+				<dd><span>Comment</span>表示順&nbsp;-&gt;&nbsp;???</dd>
+			</dl>
+		</div>
+		<h4>PURCHASE</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">購入:&nbsp;一つの商品に対する一回の購入を表現する。<br />一回の購入で一つの商品を複数個買うこともある。&nbsp;-&gt;&nbsp;??:&nbsp;????????????????????<br />???????????????????????</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>PURCHASE_ID</dt>
+				<dd><span>Comment</span>購入ID:&nbsp;連番&nbsp;-&gt;&nbsp;??ID:&nbsp;??</dd>
+				<dt>MEMBER_ID</dt>
+				<dd><span>Comment</span>会員ID:&nbsp;会員を参照するID。<br />購入を識別する自然キー（複合ユニーク制約）の筆頭要素。&nbsp;-&gt;&nbsp;??ID:&nbsp;???????ID?<br />???????????????????????????</dd>
+				<dt>PRODUCT_ID</dt>
+				<dd><span>Comment</span>商品ID:&nbsp;商品を参照するID。&nbsp;-&gt;&nbsp;??ID:&nbsp;???????ID?</dd>
+				<dt>PURCHASE_DATETIME</dt>
+				<dd><span>Comment</span>購入日時:&nbsp;購入した瞬間の日時。&nbsp;-&gt;&nbsp;????:&nbsp;??????????</dd>
+				<dt>PURCHASE_COUNT</dt>
+				<dd><span>Comment</span>購入数量:&nbsp;購入した商品の（一回の購入における）数量。&nbsp;-&gt;&nbsp;????:&nbsp;?????????????????????</dd>
+				<dt>PURCHASE_PRICE</dt>
+				<dd><span>Comment</span>購入価格:&nbsp;購入によって実際に会員が支払った（支払う予定の）価格。<br />基本は商品の定価に購入数量を掛けたものになるが、<br />ポイント利用や割引があったりと必ずしもそうはならない。&nbsp;-&gt;&nbsp;????:&nbsp;???????????????????????????<br />????????????????????????<br />???????????????????????????</dd>
+				<dt>PAYMENT_COMPLETE_FLG</dt>
+				<dd><span>Comment</span>支払完了フラグ:&nbsp;この購入に関しての支払いが完了しているか否か。&nbsp;-&gt;&nbsp;???????:&nbsp;???????????????????????</dd>
+			</dl>
+		</div>
+		<h4>REGION</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">地域:&nbsp;主に会員の住所に対応する地域。<br />かなりざっくりした感じではある。&nbsp;-&gt;&nbsp;??:&nbsp;???????????????<br />????????????????</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>REGION_ID</dt>
+				<dd><span>Comment</span>地域ID&nbsp;-&gt;&nbsp;??ID</dd>
+				<dt>REGION_NAME</dt>
+				<dd><span>Comment</span>地域名称&nbsp;-&gt;&nbsp;????</dd>
+			</dl>
+		</div>
+		<h4>SERVICE_RANK</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">サービスランク:&nbsp;会員のサービスレベルを表現するランク。<br />（ゴールドとかプラチナとか）&nbsp;-&gt;&nbsp;???????:&nbsp;???????????????????<br />??????????????</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>SERVICE_RANK_CODE</dt>
+				<dd><span>Comment</span>サービスランクコード:&nbsp;サービスランクを識別するコード。&nbsp;-&gt;&nbsp;??????????:&nbsp;????????????????</dd>
+				<dt>SERVICE_RANK_NAME</dt>
+				<dd><span>Comment</span>サービスランク名称:&nbsp;サービスランクの名称。<br />（ゴールドとかプラチナとか基本的には威厳のある名前）&nbsp;-&gt;&nbsp;?????????:&nbsp;???????????<br />??????????????????????????</dd>
+				<dt>SERVICE_POINT_INCIDENCE</dt>
+				<dd><span>Comment</span>サービスポイント発生率:&nbsp;購入ごとのサービスポイントの発生率。<br />購入価格にこの値をかけた数が発生ポイント。&nbsp;-&gt;&nbsp;???????????:&nbsp;??????????????????<br />?????????????????????</dd>
+				<dt>NEW_ACCEPTABLE_FLG</dt>
+				<dd><span>Comment</span>新規受け入れ可能フラグ:&nbsp;このランクへの新規受け入れができるかどうか。&nbsp;-&gt;&nbsp;???????????:&nbsp;??????????????????????</dd>
+			</dl>
+		</div>
+		<h4>WITHDRAWAL_REASON</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">退会理由:&nbsp;会員に選ばせる定型的な退会理由のマスタ。&nbsp;-&gt;&nbsp;????:&nbsp;????????????????????</div>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>WITHDRAWAL_REASON_CODE</dt>
+				<dd><span>Comment</span>退会理由コード&nbsp;-&gt;&nbsp;???????</dd>
+				<dt>WITHDRAWAL_REASON_TEXT</dt>
+				<dd><span>Comment</span>退会理由テキスト:&nbsp;退会理由の内容。テキスト形式なので目いっぱい書けるが、<br />そうするとUI側できれいに見せるのが大変でしょうね。&nbsp;-&gt;&nbsp;????????:&nbsp;???????????????????????????<br />?????UI???????????????????</dd>
+				<dt>DISPLAY_ORDER</dt>
+				<dd><span>Comment</span>表示順&nbsp;-&gt;&nbsp;???</dd>
+			</dl>
+		</div>
+	</div>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>VENDOR_CHECK</li>
+		<li>VENDOR_CONSTRAINT_NAME_AUTO_BAR</li>
+		<li>VENDOR_CONSTRAINT_NAME_AUTO_FOO</li>
+		<li>VENDOR_CONSTRAINT_NAME_AUTO_QUX</li>
+		<li>VENDOR_CONSTRAINT_NAME_AUTO_REF</li>
+		<li>VENDOR_LARGE_DATA</li>
+		<li>VENDOR_LARGE_DATA_REF</li>
+		<li>VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN</li>
+		<li>VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</li>
+		<li>WHITE_ALL_IN_ONE_CLS_CATEGORY</li>
+		<li>WHITE_ALL_IN_ONE_CLS_COMPOUND_PK_REF</li>
+		<li>WHITE_ALL_IN_ONE_CLS_ELEMENT</li>
+		<li>WHITE_ALL_IN_ONE_CLS_NORMAL_COL_REF</li>
+		<li>WHITE_BINARY</li>
+		<li>WHITE_COLUMN_EXCEPT</li>
+		<li>WHITE_COLUMN_EXCEPT_GEN_ONLY</li>
+		<li>WHITE_COMPOUND_PK</li>
+		<li>WHITE_COMPOUND_PK_REF</li>
+		<li>WHITE_COMPOUND_PK_REF_NEST</li>
+		<li>WHITE_DB_COMMENT</li>
+		<li>WHITE_DELIMITER</li>
+		<li>WHITE_DEPRECATED_CLS_ELEMENT</li>
+		<li>WHITE_ESCAPED_DFPROP</li>
+		<li>WHITE_ESCAPED_JAVA_DOC</li>
+		<li>WHITE_IMPLICIT_CONV_INTEGER</li>
+		<li>WHITE_IMPLICIT_CONV_NUMERIC</li>
+		<li>WHITE_IMPLICIT_CONV_STRING</li>
+		<li>WHITE_IMPLICIT_REVERSE_FK</li>
+		<li>WHITE_IMPLICIT_REVERSE_FK_REF</li>
+		<li>WHITE_IMPLICIT_REVERSE_FK_SUPPRESS</li>
+		<li>WHITE_LINE_SEP_COMMENT</li>
+		<li>WHITE_LOAD_DATA</li>
+		<li>WHITE_MYSELF</li>
+		<li>WHITE_MYSELF_CHECK</li>
+		<li>WHITE_NO_PK</li>
+		<li>WHITE_PG_RESERV</li>
+		<li>WHITE_PG_RESERV_REF</li>
+		<li>WHITE_PURCHASE_REFERRER</li>
+		<li>WHITE_QUOTED</li>
+		<li>WHITE_QUOTED_REF</li>
+		<li>WHITE_SELF_REFERENCE</li>
+		<li>WHITE_SELF_REFERENCE_REF_ONE</li>
+		<li>WHITE_SPLIT_MULTIPLE_FK_BASE</li>
+		<li>WHITE_SPLIT_MULTIPLE_FK_CHILD</li>
+		<li>WHITE_SPLIT_MULTIPLE_FK_NEXT</li>
+		<li>WHITE_SPLIT_MULTIPLE_FK_REF</li>
+		<li>WHITE_SUPPRESS_DEF_CHECK</li>
+		<li>WHITE_TABLE_EXCEPT_GEN_HEAD</li>
+		<li>WHITE_TABLE_EXCEPT_GEN_ONLY</li>
+		<li>WHITE_TABLE_EXCEPT_GEN_REF</li>
+		<li>WHITE_UQ_REFERENCE</li>
+		<li>WHITE_UQ_REFERENCE_REF</li>
+		<li>WHITE_UQ_REFERENCE_REF_NEST</li>
+		<li>WHITE_VARIANT_RELATION_MASTER_BAR</li>
+		<li>WHITE_VARIANT_RELATION_MASTER_CORGE</li>
+		<li>WHITE_VARIANT_RELATION_MASTER_FOO</li>
+		<li>WHITE_VARIANT_RELATION_MASTER_QUX</li>
+		<li>WHITE_VARIANT_RELATION_REFERRER</li>
+		<li>WHITE_XLS_MAN</li>
+		<li>SUMMARY_PRODUCT</li>
+		<li>SUMMARY_WITHDRAWAL</li>
+		<li>WHITE_NO_PK_RELATION</li>
+		<li>NEXT_SCHEMA_PRODUCT</li>
+	</ul>
+	<h3>Delete Procedure</h3>
+	<ul class="table-content">
+		<li>exampledb.SP_IN_OUT_PARAMETER</li>
+		<li>exampledb.SP_NO_PARAMETER</li>
+		<li>exampledb.SP_RETURN_RESULT_SET</li>
+		<li>exampledb.SP_RETURN_RESULT_SET_MORE</li>
+		<li>exampledb.SP_RETURN_RESULT_SET_WITH</li>
+		<li>exampledb.SP_TRANSACTION_INHERIT</li>
+		<li>exampledb.SP_VARIOUS_TYPE_PARAMETER</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2013/07/06 13:57:59</h2>
+	<p class="tablecount"><span class="dt">table count: </span>77&nbsp;-&gt;&nbsp;78</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_DEPRECATED_CLS_ELEMENT</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2013/07/01 13:35:05</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">会員:&nbsp;会員登録時にデータが登録される。<br />基本的に物理削除はなく、退会したらステータスが退会会員になる。&nbsp;-&gt;&nbsp;会員:&nbsp;会員のプロフィールやアカウントなどの基本情報を保持する。<br />基本的に物理削除はなく、退会したらステータスが退会会員になる。<br />ライフサイクルやカテゴリの違う会員情報は、one-to-oneなどの関連テーブルにて。</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2013/07/01 01:07:34</h2>
+
+	<h3>Change EscapedDfprop</h3>
+	<div class="table-content">
+		<h4>{=}</h4>
+		<div class="change-table-content">
+			<h5>Value</h5>
+			<div class="column-content">;¥¥&nbsp;-&gt;&nbsp;;\\</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2013/06/30 23:58:08</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_ESCAPED_DFPROP</h4>
+		<div class="change-table-content">
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>DEFAULT_ESCAPED</li>
+			</ul>
+		</div>
+	</div>
+	<h3>Add EscapedDfprop</h3>
+	<ul class="table-content">
+		<li>;@\</li>
+		<li>{=}</li>
+	</ul>
+	<h3>Change EscapedDfprop</h3>
+	<div class="table-content">
+		<h4>\};</h4>
+		<div class="change-table-content">
+			<h5>Value</h5>
+			<div class="column-content">}}{|{a;b=c}d&nbsp;-&gt;&nbsp;}}{</div>
+		</div>
+	</div>
+	<h3>Delete EscapedDfprop</h3>
+	<ul class="table-content">
+		<li>M=\</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2013/06/30 23:44:40</h2>
+
+	<h3>Add EscapedDfprop</h3>
+	<ul class="table-content">
+		<li>M=\</li>
+		<li>\};</li>
+	</ul>
+	<h3>Delete EscapedDfprop</h3>
+	<ul class="table-content">
+		<li>;@\</li>
+		<li>{=}</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2013/06/30 16:14:29</h2>
+	<p class="tablecount"><span class="dt">table count: </span>76&nbsp;-&gt;&nbsp;77</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_ESCAPED_JAVA_DOC</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2013/06/30 15:51:33</h2>
+	<p class="tablecount"><span class="dt">table count: </span>75&nbsp;-&gt;&nbsp;76</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_LINE_SEP_COMMENT</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2013/06/16 22:10:29</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_DB_COMMENT</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>DB_COMMENT_NAME</dt>
+				<dd><span>Comment</span>JavaDocHeadache:&nbsp;e.g.&nbsp;/*BEGIN*/,&nbsp;@foo&nbsp;&lt;br&nbsp;/&gt;&nbsp;-&gt;&nbsp;JavaDocHeadache:&nbsp;e.g.&nbsp;/*BEGIN*/,&nbsp;@&nbsp;@foo&nbsp;&lt;br&nbsp;/&gt;</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2013/06/06 11:19:20</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_DB_COMMENT</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>DB_COMMENT_NAME</dt>
+				<dd><span>Comment</span>JavaDocHeadache:&nbsp;e.g.&nbsp;/*BEGIN*/,&nbsp;&lt;br&nbsp;/&gt;&nbsp;-&gt;&nbsp;JavaDocHeadache:&nbsp;e.g.&nbsp;/*BEGIN*/,&nbsp;@foo&nbsp;&lt;br&nbsp;/&gt;</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2013/06/06 10:19:45</h2>
+	<p class="tablecount"><span class="dt">table count: </span>74&nbsp;-&gt;&nbsp;75</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_DB_COMMENT</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2013/03/27 13:49:54</h2>
+
+	<h3>Add EscapedDfprop</h3>
+	<ul class="table-content">
+		<li>;@\\</li>
+		<li>{=}</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2013/03/27 13:28:12</h2>
+	<p class="tablecount"><span class="dt">table count: </span>72&nbsp;-&gt;&nbsp;74</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_ESCAPED_DFPROP</li>
+		<li>WHITE_SUPPRESS_DEF_CHECK</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/11/08 03:32:23</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_ADDRESS</h4>
+		<div class="change-table-content">
+			<h5>Column-Def Order</h5>
+			<div class="column-content">MEMBER_ID(6)&nbsp;-&gt;&nbsp;MEMBER_ID(2)</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/11/08 03:30:42</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_ADDRESS</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_MEMBER_XXXX</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/11/08 03:28:06</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_ADDRESS</h4>
+		<div class="change-table-content">
+			<h5>Column-Def Order</h5>
+			<div class="column-content">VALID_BEGIN_DATE(3),&nbsp;VALID_END_DATE(4),&nbsp;ADDRESS(5),&nbsp;REGION_ID(6)&nbsp;-&gt;&nbsp;VALID_BEGIN_DATE(2),&nbsp;VALID_END_DATE(3),&nbsp;ADDRESS(4),&nbsp;REGION_ID(5)</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/11/05 23:12:56</h2>
+	<p class="tablecount"><span class="dt">table count: </span>70&nbsp;-&gt;&nbsp;72</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>SUMMARY_WITHDRAWAL</li>
+		<li>WHITE_NO_PK_RELATION</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/11/01 15:00:29</h2>
+	<p class="tablecount"><span class="dt">table count: </span>69&nbsp;-&gt;&nbsp;70</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_SPLIT_MULTIPLE_FK_CHILD</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/10/26 16:41:13</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_SPLIT_MULTIPLE_FK_BASE</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>BASE_ID</dt>
+				<dd><span>Identity</span>true&nbsp;-&gt;&nbsp;false</dd>
+			</dl>
+		</div>
+		<h4>WHITE_SPLIT_MULTIPLE_FK_NEXT</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>NEXT_ID</dt>
+				<dd><span>Identity</span>true&nbsp;-&gt;&nbsp;false</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/10/26 16:14:26</h2>
+	<p class="tablecount"><span class="dt">table count: </span>66&nbsp;-&gt;&nbsp;69</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_SPLIT_MULTIPLE_FK_BASE</li>
+		<li>WHITE_SPLIT_MULTIPLE_FK_NEXT</li>
+		<li>WHITE_SPLIT_MULTIPLE_FK_REF</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/09/11 22:06:04</h2>
+
+	<h3>Change Procedure</h3>
+	<div class="table-content">
+		<h4>exampledb.SP_VARIOUS_TYPE_PARAMETER</h4>
+		<div class="change-table-content">
+			<h5>SourceLine</h5>
+			<div class="column-content">9&nbsp;-&gt;&nbsp;11</div>
+			<h5>SourceSize</h5>
+			<div class="column-content">248&nbsp;-&gt;&nbsp;328</div>
+			<h5>SourceHash</h5>
+			<div class="column-content">70b756e4&nbsp;-&gt;&nbsp;49890c55</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/09/11 16:11:27</h2>
+
+	<h3>Change Procedure</h3>
+	<div class="table-content">
+		<h4>exampledb.SP_IN_OUT_PARAMETER</h4>
+		<div class="change-table-content">
+			<h5>SourceSize</h5>
+			<div class="column-content">70&nbsp;-&gt;&nbsp;86</div>
+			<h5>SourceHash</h5>
+			<div class="column-content">27652c66&nbsp;-&gt;&nbsp;cf957bfd</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/08/28 13:12:32</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_ADDRESS</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>ADDRESS</dt>
+				<dd><span>Size</span>250&nbsp;-&gt;&nbsp;200</dd>
+				<dd><span>Not Null</span>false&nbsp;-&gt;&nbsp;true</dd>
+				<dd><span>Comment</span>&nbsp;-&gt;&nbsp;住所:&nbsp;まるごと住所</dd>
+			</dl>
+		</div>
+		<h4>MEMBER_SERVICE</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_SERVICE_ID</dt>
+				<dd><span>Identity</span>false&nbsp;-&gt;&nbsp;true</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/08/25 23:10:43</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_ADDRESS</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>ADDRESS</dt>
+				<dd><span>Size</span>200&nbsp;-&gt;&nbsp;250</dd>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dd><span>Comment</span>住所:&nbsp;まるごと住所&nbsp;-&gt;&nbsp;</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/08/21 17:42:11</h2>
+
+	<h3>Change Procedure</h3>
+	<div class="table-content">
+		<h4>exampledb.SP_IN_OUT_PARAMETER</h4>
+		<div class="change-table-content">
+			<h5>SourceLine</h5>
+			<div class="column-content">5&nbsp;-&gt;&nbsp;4</div>
+			<h5>SourceSize</h5>
+			<div class="column-content">100&nbsp;-&gt;&nbsp;70</div>
+			<h5>SourceHash</h5>
+			<div class="column-content">3069f26a&nbsp;-&gt;&nbsp;27652c66</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/08/21 17:41:13</h2>
+
+	<h3>Change Procedure</h3>
+	<div class="table-content">
+		<h4>exampledb.SP_IN_OUT_PARAMETER</h4>
+		<div class="change-table-content">
+			<h5>SourceSize</h5>
+			<div class="column-content">99&nbsp;-&gt;&nbsp;100</div>
+			<h5>SourceHash</h5>
+			<div class="column-content">2e31cd8b&nbsp;-&gt;&nbsp;3069f26a</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/08/21 17:38:56</h2>
+
+	<h3>Change Procedure</h3>
+	<div class="table-content">
+		<h4>exampledb.SP_IN_OUT_PARAMETER</h4>
+		<div class="change-table-content">
+			<h5>SourceLine</h5>
+			<div class="column-content">4&nbsp;-&gt;&nbsp;5</div>
+			<h5>SourceSize</h5>
+			<div class="column-content">70&nbsp;-&gt;&nbsp;99</div>
+			<h5>SourceHash</h5>
+			<div class="column-content">27652c66&nbsp;-&gt;&nbsp;2e31cd8b</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/08/21 17:38:17</h2>
+
+	<h3>Change Procedure</h3>
+	<div class="table-content">
+		<h4>exampledb.SP_IN_OUT_PARAMETER</h4>
+		<div class="change-table-content">
+			<h5>SourceHash</h5>
+			<div class="column-content">dbcffb0b&nbsp;-&gt;&nbsp;27652c66</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/08/21 17:36:55</h2>
+
+	<h3>Change Procedure</h3>
+	<div class="table-content">
+		<h4>exampledb.SP_IN_OUT_PARAMETER</h4>
+		<div class="change-table-content">
+			<h5>SourceHash</h5>
+			<div class="column-content">27652c66&nbsp;-&gt;&nbsp;dbcffb0b</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/07/21 13:43:43</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>IX_LARGE_DATA_NUMERIC_INTEGER</li>
+				<li>IX_LARGE_DATA_STRING</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+				<li>IX_LARGE_DATA_REF_DATE</li>
+				<li>IX_LARGE_DATA_REF_NULLABLE_DEC</li>
+				<li>IX_LARGE_DATA_REF_TIMESTAMP</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/07/20 19:58:40</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>IX_LARGE_DATA_NUMERIC_INTEGER</li>
+				<li>IX_LARGE_DATA_STRING</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+				<li>IX_LARGE_DATA_REF_DATE</li>
+				<li>IX_LARGE_DATA_REF_NULLABLE_DEC</li>
+				<li>IX_LARGE_DATA_REF_TIMESTAMP</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/07/16 01:49:00</h2>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>MEMBER</li>
+		<li>MEMBER_STATUS</li>
+	</ul>
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_ADDRESS</h4>
+		<div class="change-table-content">
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_MEMBER_ADDRESS_MEMBER</dt>
+			</dl>
+		</div>
+		<h4>MEMBER_LOGIN</h4>
+		<div class="change-table-content">
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_MEMBER_LOGIN_MEMBER</dt>
+				<dt>FK_MEMBER_LOGIN_MEMBER_STATUS</dt>
+			</dl>
+		</div>
+		<h4>MEMBER_SECURITY</h4>
+		<div class="change-table-content">
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_MEMBER_SECURITY_MEMBER</dt>
+			</dl>
+		</div>
+		<h4>MEMBER_SERVICE</h4>
+		<div class="change-table-content">
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_MEMBER_SERVICE_MEMBER</dt>
+			</dl>
+		</div>
+		<h4>MEMBER_WITHDRAWAL</h4>
+		<div class="change-table-content">
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_MEMBER_WITHDRAWAL_MEMBER</dt>
+			</dl>
+		</div>
+		<h4>PURCHASE</h4>
+		<div class="change-table-content">
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_PURCHASE_MEMBER</dt>
+			</dl>
+		</div>
+	</div>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>TOMBER</li>
+		<li>TOMBER_STATUS</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/07/16 01:42:44</h2>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>TOMBER</li>
+		<li>TOMBER_STATUS</li>
+	</ul>
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_ADDRESS</h4>
+		<div class="change-table-content">
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_MEMBER_ADDRESS_MEMBER</dt>
+			</dl>
+		</div>
+		<h4>MEMBER_LOGIN</h4>
+		<div class="change-table-content">
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_MEMBER_LOGIN_MEMBER</dt>
+				<dt>FK_MEMBER_LOGIN_MEMBER_STATUS</dt>
+			</dl>
+		</div>
+		<h4>MEMBER_SECURITY</h4>
+		<div class="change-table-content">
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_MEMBER_SECURITY_MEMBER</dt>
+			</dl>
+		</div>
+		<h4>MEMBER_SERVICE</h4>
+		<div class="change-table-content">
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_MEMBER_SERVICE_MEMBER</dt>
+			</dl>
+		</div>
+		<h4>MEMBER_WITHDRAWAL</h4>
+		<div class="change-table-content">
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_MEMBER_WITHDRAWAL_MEMBER</dt>
+			</dl>
+		</div>
+		<h4>PURCHASE</h4>
+		<div class="change-table-content">
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_PURCHASE_MEMBER</dt>
+			</dl>
+		</div>
+	</div>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>MEMBER</li>
+		<li>MEMBER_STATUS</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/07/05 16:37:36</h2>
+	<p class="tablecount"><span class="dt">table count: </span>65&nbsp;-&gt;&nbsp;66</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_VARIANT_RELATION_MASTER_CORGE</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/07/05 14:09:12</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_VARIANT_RELATION_REFERRER</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>VARIANT_MASTER_ID</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>MULTI_MASTER_ID</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/07/05 14:02:52</h2>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_VARIANT_RELATION_MASTER_BAR</li>
+		<li>WHITE_VARIANT_RELATION_MASTER_FOO</li>
+		<li>WHITE_VARIANT_RELATION_MASTER_QUX</li>
+		<li>WHITE_VARIANT_RELATION_REFERRER</li>
+	</ul>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_MULTIPLE_RELATION_MASTER_BAR</li>
+		<li>WHITE_MULTIPLE_RELATION_MASTER_FOO</li>
+		<li>WHITE_MULTIPLE_RELATION_MASTER_QUX</li>
+		<li>WHITE_MULTIPLE_RELATION_REFERRER</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/07/05 12:15:17</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_MULTIPLE_RELATION_MASTER_BAR</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MASTER_BAR_ID</dt>
+				<dd><span>Identity</span>true&nbsp;-&gt;&nbsp;false</dd>
+			</dl>
+		</div>
+		<h4>WHITE_MULTIPLE_RELATION_MASTER_FOO</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MASTER_FOO_ID</dt>
+				<dd><span>Identity</span>true&nbsp;-&gt;&nbsp;false</dd>
+			</dl>
+		</div>
+		<h4>WHITE_MULTIPLE_RELATION_MASTER_QUX</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MASTER_QUX_ID</dt>
+				<dd><span>Identity</span>true&nbsp;-&gt;&nbsp;false</dd>
+			</dl>
+		</div>
+		<h4>WHITE_MULTIPLE_RELATION_REFERRER</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>REFERRER_ID</dt>
+				<dd><span>Identity</span>true&nbsp;-&gt;&nbsp;false</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/07/05 11:55:47</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_MULTIPLE_RELATION_REFERRER</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MULTI_MASTER_ID</dt>
+				<dd><span>Type</span>VARCHAR&nbsp;-&gt;&nbsp;BIGINT</dd>
+				<dd><span>Size</span>200&nbsp;-&gt;&nbsp;19</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/07/05 11:44:12</h2>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_MULTIPLE_RELATION_MASTER_BAR</li>
+		<li>WHITE_MULTIPLE_RELATION_MASTER_FOO</li>
+		<li>WHITE_MULTIPLE_RELATION_MASTER_QUX</li>
+		<li>WHITE_MULTIPLE_RELATION_REFERRER</li>
+	</ul>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_BIZ_MANY_TO_ONE_MASTER_BAR</li>
+		<li>WHITE_BIZ_MANY_TO_ONE_MASTER_FOO</li>
+		<li>WHITE_BIZ_MANY_TO_ONE_MASTER_QUX</li>
+		<li>WHITE_BIZ_MANY_TO_ONE_REFERRER</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/07/05 02:31:00</h2>
+	<p class="tablecount"><span class="dt">table count: </span>64&nbsp;-&gt;&nbsp;65</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_BIZ_MANY_TO_ONE_MASTER_QUX</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/07/05 01:16:12</h2>
+	<p class="tablecount"><span class="dt">table count: </span>61&nbsp;-&gt;&nbsp;64</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_BIZ_MANY_TO_ONE_MASTER_BAR</li>
+		<li>WHITE_BIZ_MANY_TO_ONE_MASTER_FOO</li>
+		<li>WHITE_BIZ_MANY_TO_ONE_REFERRER</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/05/27 17:22:28</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_SERVICE</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_SERVICE_ID</dt>
+				<dd><span>Type</span>BIGINT&nbsp;-&gt;&nbsp;INT</dd>
+				<dd><span>Size</span>19&nbsp;-&gt;&nbsp;10</dd>
+				<dd><span>Default</span>0&nbsp;-&gt;&nbsp;null</dd>
+				<dd><span>Comment</span>&nbsp;-&gt;&nbsp;会員サービスID:&nbsp;独立した主キーとなるが、実質的に会員IDとは&nbsp;one-to-one&nbsp;である。</dd>
+				<dt>SERVICE_POINT_COUNT</dt>
+				<dd><span>Type</span>BIGINT&nbsp;-&gt;&nbsp;INT</dd>
+				<dd><span>Size</span>19&nbsp;-&gt;&nbsp;10</dd>
+				<dd><span>Not Null</span>false&nbsp;-&gt;&nbsp;true</dd>
+				<dd><span>Comment</span>&nbsp;-&gt;&nbsp;サービスポイント数:&nbsp;会員が現在利用できるサービスポイントの数。<br />基本的に、購入時には増えてポイントを使ったら減る。</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/05/27 16:19:31</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_SERVICE</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>MEMBER_SERVICE_ID</dt>
+				<dd><span>Type</span>INT&nbsp;-&gt;&nbsp;BIGINT</dd>
+				<dd><span>Size</span>10&nbsp;-&gt;&nbsp;19</dd>
+				<dd><span>Default</span>null&nbsp;-&gt;&nbsp;0</dd>
+				<dd><span>Comment</span>会員サービスID:&nbsp;独立した主キーとなるが、実質的に会員IDとは&nbsp;one-to-one&nbsp;である。&nbsp;-&gt;&nbsp;</dd>
+				<dt>SERVICE_POINT_COUNT</dt>
+				<dd><span>Type</span>INT&nbsp;-&gt;&nbsp;BIGINT</dd>
+				<dd><span>Size</span>10&nbsp;-&gt;&nbsp;19</dd>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dd><span>Comment</span>サービスポイント数:&nbsp;会員が現在利用できるサービスポイントの数。<br />基本的に、購入時には増えてポイントを使ったら減る。&nbsp;-&gt;&nbsp;</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/05/06 23:46:23</h2>
+	<p class="tablecount"><span class="dt">table count: </span>60&nbsp;-&gt;&nbsp;61</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_ALL_IN_ONE_CLS_CATEGORY</li>
+		<li>WHITE_ALL_IN_ONE_CLS_ELEMENT</li>
+	</ul>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_ALL_IN_ONE_CLS</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/05/06 23:22:47</h2>
+	<p class="tablecount"><span class="dt">table count: </span>61&nbsp;-&gt;&nbsp;60</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_ALL_IN_ONE_CLS</li>
+	</ul>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_ALL_IN_ONE_CLS_CATEGORY</li>
+		<li>WHITE_ALL_IN_ONE_CLS_ELEMENT</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/04/27 18:22:33</h2>
+	<p class="tablecount"><span class="dt">table count: </span>60&nbsp;-&gt;&nbsp;61</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_ALL_IN_ONE_CLS_CATEGORY</li>
+		<li>WHITE_ALL_IN_ONE_CLS_ELEMENT</li>
+	</ul>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_ALL_IN_ONE_CLS</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/04/27 17:22:06</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_ALL_IN_ONE_CLS</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>CLS_ELEMENT_NAME</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/02/13 00:16:37</h2>
+	<p class="tablecount"><span class="dt">table count: </span>59&nbsp;-&gt;&nbsp;60</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_PURCHASE_REFERRER</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/02/12 23:59:55</h2>
+	<p class="tablecount"><span class="dt">table count: </span>60&nbsp;-&gt;&nbsp;59</p>
+
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_PURCHASE_REFERRER</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/02/09 13:00:21</h2>
+	<p class="tablecount"><span class="dt">table count: </span>59&nbsp;-&gt;&nbsp;60</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_PURCHASE_REFERRER</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/01/28 19:36:35</h2>
+	<p class="tablecount"><span class="dt">table count: </span>58&nbsp;-&gt;&nbsp;59</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>NEXT_SCHEMA_PRODUCT</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2012/01/28 19:28:22</h2>
+	<p class="tablecount"><span class="dt">table count: </span>59&nbsp;-&gt;&nbsp;58</p>
+
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>NEXT_SCHEMA_PRODUCT</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/12/13 19:04:46</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>NEXT_SCHEMA_PRODUCT</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>COLUMN_EXCEPT_GEN_ONLY_TEST</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>COLUMN_EXCEPT_TEST</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/12/13 18:50:20</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>NEXT_SCHEMA_PRODUCT</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>COLUMN_EXCEPT_TEST</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/12/10 17:33:42</h2>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_COLUMN_EXCEPT_GEN_ONLY</li>
+	</ul>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_TABLE_EXCEPT_COLUMN</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/12/10 17:28:35</h2>
+	<p class="tablecount"><span class="dt">table count: </span>58&nbsp;-&gt;&nbsp;59</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_TABLE_EXCEPT_COLUMN</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/12/08 17:33:13</h2>
+	<p class="tablecount"><span class="dt">table count: </span>57&nbsp;-&gt;&nbsp;58</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_IMPLICIT_REVERSE_FK_SUPPRESS</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/12/08 17:12:09</h2>
+	<p class="tablecount"><span class="dt">table count: </span>55&nbsp;-&gt;&nbsp;57</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_IMPLICIT_REVERSE_FK</li>
+		<li>WHITE_IMPLICIT_REVERSE_FK_REF</li>
+	</ul>
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_ADDRESS</h4>
+		<div class="change-table-content">
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_MEMBER_ADDRESS_MEMBER</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/12/08 16:44:09</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_ADDRESS</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_MEMBER_ADDRESS_MEMBER</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/12/08 15:25:02</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_SELF_REFERENCE_REF_ONE</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>SELF_REFERENCE_REF_ONE_NAME</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>SELF_REFERENCE_REF_ONE_ID</li>
+			</ul>
+			<h5>Change PK</h5>
+			<dl class="column-content">
+				<dt>PRIMARY</dt>
+				<dd><span>Column</span>SELF_REFERENCE_REF_ONE_ID&nbsp;-&gt;&nbsp;SELF_REFERENCE_ID</dd>
+			</dl>
+			<h5>Delete UQ</h5>
+			<ul class="column-content">
+				<li>SELF_REFERENCE_ID</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/12/08 11:34:09</h2>
+	<p class="tablecount"><span class="dt">table count: </span>54&nbsp;-&gt;&nbsp;55</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_SELF_REFERENCE_REF_ONE</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/29 12:07:16</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>IX_LARGE_DATA_NUMERIC_INTEGER</li>
+				<li>IX_LARGE_DATA_STRING</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+				<li>IX_LARGE_DATA_REF_DATE</li>
+				<li>IX_LARGE_DATA_REF_NULLABLE_DEC</li>
+				<li>IX_LARGE_DATA_REF_TIMESTAMP</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/29 12:00:31</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>IX_LARGE_DATA_NUMERIC_INTEGER</li>
+				<li>IX_LARGE_DATA_STRING</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+				<li>IX_LARGE_DATA_REF_DATE</li>
+				<li>IX_LARGE_DATA_REF_NULLABLE_DEC</li>
+				<li>IX_LARGE_DATA_REF_TIMESTAMP</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/24 02:57:13</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</h4>
+		<div class="change-table-content">
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/24 02:54:54</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID2</li>
+			</ul>
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/24 02:53:13</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID2</li>
+			</ul>
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</dt>
+				<dd><span>Column</span>THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID&nbsp;-&gt;&nbsp;THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID2</dd>
+			</dl>
+			<h5>Change Index</h5>
+			<dl class="column-content">
+				<dt>FK_VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</dt>
+				<dd><span>Column</span>THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID&nbsp;-&gt;&nbsp;THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID2</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/24 02:45:16</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_2(new)</li>
+			</ul>
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_2(old)</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_BAR_ID</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_CORGE_ID</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/24 01:19:00</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_CORGE_ID</li>
+			</ul>
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_2</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_CORGE_ID</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_BAR_ID</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/24 00:36:56</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_2</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/24 00:35:09</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_1</li>
+			</ul>
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_2</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_FOO_ID</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/24 00:32:24</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_1</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_FOO_ID</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/24 00:29:49</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_2</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/24 00:07:42</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_2</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/24 00:03:40</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_2</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/23 23:58:19</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_2</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/23 23:49:48</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_2</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/23 23:37:29</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_2</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/23 23:09:20</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_2</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/23 23:06:18</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_2</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/23 22:57:53</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>vendor_constraint_name_auto_ref_ibfk_2</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/23 22:31:12</h2>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>VENDOR_CONSTRAINT_NAME_AUTO_BAR</li>
+		<li>VENDOR_CONSTRAINT_NAME_AUTO_FOO</li>
+		<li>VENDOR_CONSTRAINT_NAME_AUTO_QUX</li>
+		<li>VENDOR_CONSTRAINT_NAME_AUTO_REF</li>
+	</ul>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>VEBDOR_CONSTRAINT_NAME_AUTO_BAR</li>
+		<li>VEBDOR_CONSTRAINT_NAME_AUTO_FOO</li>
+		<li>VEBDOR_CONSTRAINT_NAME_AUTO_QUX</li>
+		<li>VEBDOR_CONSTRAINT_NAME_AUTO_REF</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/22 14:33:40</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>THE_LONG_AND_WINDING_TABLE_AND_COLUMN_IDD</li>
+			</ul>
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</dt>
+				<dd><span>Column</span>THE_LONG_AND_WINDING_TABLE_AND_COLUMN_IDD&nbsp;-&gt;&nbsp;THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID</dd>
+			</dl>
+			<h5>Change Index</h5>
+			<dl class="column-content">
+				<dt>FK_VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</dt>
+				<dd><span>Column</span>THE_LONG_AND_WINDING_TABLE_AND_COLUMN_IDD&nbsp;-&gt;&nbsp;THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/22 14:31:06</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VEBDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Add UQ</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_UNIQUE</li>
+			</ul>
+			<h5>Delete UQ</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_QUX_ID</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_QUX_ID</li>
+			</ul>
+		</div>
+		<h4>VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>THE_LONG_AND_WINDING_TABLE_AND_COLUMN_IDD</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID</li>
+			</ul>
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</dt>
+				<dd><span>Column</span>THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID&nbsp;-&gt;&nbsp;THE_LONG_AND_WINDING_TABLE_AND_COLUMN_IDD</dd>
+			</dl>
+			<h5>Change Index</h5>
+			<dl class="column-content">
+				<dt>FK_VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</dt>
+				<dd><span>Column</span>THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID&nbsp;-&gt;&nbsp;THE_LONG_AND_WINDING_TABLE_AND_COLUMN_IDD</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/22 14:30:03</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VEBDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Add UQ</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_QUX_ID</li>
+			</ul>
+			<h5>Delete UQ</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_UNIQUE</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_QUX_ID</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/22 10:16:54</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VEBDOR_CONSTRAINT_NAME_AUTO_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_UNIQUE</li>
+			</ul>
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>vebdor_constraint_name_auto_ref_ibfk_1</dt>
+				<dd><span>Column</span>CONSTRAINT_NAME_AUTO_FOO_ID&nbsp;-&gt;&nbsp;CONSTRAINT_NAME_AUTO_BAR_ID</dd>
+				<dt>vebdor_constraint_name_auto_ref_ibfk_2</dt>
+				<dd><span>Column</span>CONSTRAINT_NAME_AUTO_BAR_ID&nbsp;-&gt;&nbsp;CONSTRAINT_NAME_AUTO_QUX_ID</dd>
+				<dt>vebdor_constraint_name_auto_ref_ibfk_3</dt>
+				<dd><span>Column</span>CONSTRAINT_NAME_AUTO_QUX_ID&nbsp;-&gt;&nbsp;CONSTRAINT_NAME_AUTO_FOO_ID</dd>
+			</dl>
+			<h5>Add UQ</h5>
+			<ul class="column-content">
+				<li>CONSTRAINT_NAME_AUTO_UNIQUE</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/22 03:14:48</h2>
+	<p class="tablecount"><span class="dt">table count: </span>50&nbsp;-&gt;&nbsp;54</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>VEBDOR_CONSTRAINT_NAME_AUTO_BAR</li>
+		<li>VEBDOR_CONSTRAINT_NAME_AUTO_FOO</li>
+		<li>VEBDOR_CONSTRAINT_NAME_AUTO_QUX</li>
+		<li>VEBDOR_CONSTRAINT_NAME_AUTO_REF</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/20 16:22:14</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>IX_LARGE_DATA_NUMERIC_INTEGER</li>
+				<li>IX_LARGE_DATA_STRING</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+				<li>IX_LARGE_DATA_REF_DATE</li>
+				<li>IX_LARGE_DATA_REF_NULLABLE_DEC</li>
+				<li>IX_LARGE_DATA_REF_TIMESTAMP</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/20 16:02:22</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>IX_LARGE_DATA_NUMERIC_INTEGER</li>
+				<li>IX_LARGE_DATA_STRING</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+				<li>IX_LARGE_DATA_REF_DATE</li>
+				<li>IX_LARGE_DATA_REF_NULLABLE_DEC</li>
+				<li>IX_LARGE_DATA_REF_TIMESTAMP</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/17 12:55:09</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>SHORT_NAME</li>
+				<li>SHORT_SIZE</li>
+			</ul>
+		</div>
+		<h4>VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>SHORT_DATE</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/17 12:46:54</h2>
+	<p class="tablecount"><span class="dt">table count: </span>51&nbsp;-&gt;&nbsp;50</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN</li>
+		<li>VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF</li>
+	</ul>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>VENDOR_SUPER_LONG_NAME_TABLE_DESU</li>
+		<li>VENDOR_SUPER_LONG_NAME_TABLE_DESU_REF</li>
+		<li>WHITE_THE_LONG_AND_WINDING_TABLE_AND_COLUMN</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/10/17 12:28:06</h2>
+	<p class="tablecount"><span class="dt">table count: </span>49&nbsp;-&gt;&nbsp;51</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>VENDOR_SUPER_LONG_NAME_TABLE_DESU</li>
+		<li>VENDOR_SUPER_LONG_NAME_TABLE_DESU_REF</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/09/11 17:05:43</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>PRODUCT</h4>
+		<div class="change-table-content">
+			<h5>Comment</h5>
+			<div class="column-content">商品:&nbsp;会員へ販売する商品のマスタ。&nbsp;-&gt;&nbsp;商品:&nbsp;会員へ販売する商品のマスタ。<br />販売可能なものだけでなく、生産中止や販売中止などの商品も含まれる。</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/09/11 16:58:08</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>PRODUCT</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>REGULAR_PRICE</dt>
+				<dd><span>Comment</span>定価:&nbsp;何も割引などがない場合の販売価格&nbsp;-&gt;&nbsp;定価:&nbsp;特に割引などがない場合の販売価格</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/08/20 22:47:33</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_IMPLICIT_CONV_NUMERIC</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>IMPLICIT_CONV_NUMERIC_ID</dt>
+				<dd><span>Size</span>7,&nbsp;2&nbsp;-&gt;&nbsp;20</dd>
+				<dt>IMPLICIT_CONV_INTEGER_ID</dt>
+				<dd><span>Size</span>7,&nbsp;2&nbsp;-&gt;&nbsp;20</dd>
+				<dt>IMPLICIT_CONV_STRING_ID</dt>
+				<dd><span>Size</span>7,&nbsp;2&nbsp;-&gt;&nbsp;20</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/08/20 21:42:34</h2>
+	<p class="tablecount"><span class="dt">table count: </span>46&nbsp;-&gt;&nbsp;49</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_IMPLICIT_CONV_INTEGER</li>
+		<li>WHITE_IMPLICIT_CONV_NUMERIC</li>
+		<li>WHITE_IMPLICIT_CONV_STRING</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/07/30 11:26:40</h2>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_XLS_MAN</li>
+	</ul>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_EXCEL_MAN</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/07/30 11:24:55</h2>
+	<p class="tablecount"><span class="dt">table count: </span>45&nbsp;-&gt;&nbsp;46</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_EXCEL_MAN</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/07/29 00:07:05</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>IX_LARGE_DATA_NUMERIC_INTEGER</li>
+				<li>IX_LARGE_DATA_STRING</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+				<li>IX_LARGE_DATA_REF_DATE</li>
+				<li>IX_LARGE_DATA_REF_NULLABLE_DEC</li>
+				<li>IX_LARGE_DATA_REF_TIMESTAMP</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/07/28 23:36:36</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>IX_LARGE_DATA_NUMERIC_INTEGER</li>
+				<li>IX_LARGE_DATA_STRING</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+				<li>IX_LARGE_DATA_REF_DATE</li>
+				<li>IX_LARGE_DATA_REF_NULLABLE_DEC</li>
+				<li>IX_LARGE_DATA_REF_TIMESTAMP</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/07/07 14:45:50</h2>
+	<p class="tablecount"><span class="dt">table count: </span>2&nbsp;-&gt;&nbsp;45</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>MEMBER</li>
+		<li>MEMBER_ADDRESS</li>
+		<li>MEMBER_LOGIN</li>
+		<li>MEMBER_SECURITY</li>
+		<li>MEMBER_SERVICE</li>
+		<li>MEMBER_STATUS</li>
+		<li>MEMBER_WITHDRAWAL</li>
+		<li>PRODUCT</li>
+		<li>PRODUCT_CATEGORY</li>
+		<li>PRODUCT_STATUS</li>
+		<li>PURCHASE</li>
+		<li>REGION</li>
+		<li>SERVICE_RANK</li>
+		<li>VENDOR_CHECK</li>
+		<li>VENDOR_LARGE_DATA</li>
+		<li>VENDOR_LARGE_DATA_REF</li>
+		<li>WHITE_ALL_IN_ONE_CLS</li>
+		<li>WHITE_ALL_IN_ONE_CLS_COMPOUND_PK_REF</li>
+		<li>WHITE_ALL_IN_ONE_CLS_NORMAL_COL_REF</li>
+		<li>WHITE_BINARY</li>
+		<li>WHITE_COLUMN_EXCEPT</li>
+		<li>WHITE_COMPOUND_PK</li>
+		<li>WHITE_COMPOUND_PK_REF</li>
+		<li>WHITE_COMPOUND_PK_REF_NEST</li>
+		<li>WHITE_DELIMITER</li>
+		<li>WHITE_LOAD_DATA</li>
+		<li>WHITE_MYSELF</li>
+		<li>WHITE_MYSELF_CHECK</li>
+		<li>WHITE_NO_PK</li>
+		<li>WHITE_PG_RESERV</li>
+		<li>WHITE_PG_RESERV_REF</li>
+		<li>WHITE_QUOTED</li>
+		<li>WHITE_QUOTED_REF</li>
+		<li>WHITE_SELF_REFERENCE</li>
+		<li>WHITE_TABLE_EXCEPT_GEN_HEAD</li>
+		<li>WHITE_TABLE_EXCEPT_GEN_ONLY</li>
+		<li>WHITE_TABLE_EXCEPT_GEN_REF</li>
+		<li>WHITE_THE_LONG_AND_WINDING_TABLE_AND_COLUMN</li>
+		<li>WHITE_UQ_REFERENCE</li>
+		<li>WHITE_UQ_REFERENCE_REF</li>
+		<li>WHITE_UQ_REFERENCE_REF_NEST</li>
+		<li>WITHDRAWAL_REASON</li>
+		<li>SUMMARY_PRODUCT</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/07/07 14:28:35</h2>
+	<p class="tablecount"><span class="dt">table count: </span>45&nbsp;-&gt;&nbsp;2</p>
+
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>MEMBER</li>
+		<li>MEMBER_ADDRESS</li>
+		<li>MEMBER_LOGIN</li>
+		<li>MEMBER_SECURITY</li>
+		<li>MEMBER_SERVICE</li>
+		<li>MEMBER_STATUS</li>
+		<li>MEMBER_WITHDRAWAL</li>
+		<li>PRODUCT</li>
+		<li>PRODUCT_CATEGORY</li>
+		<li>PRODUCT_STATUS</li>
+		<li>PURCHASE</li>
+		<li>REGION</li>
+		<li>SERVICE_RANK</li>
+		<li>VENDOR_CHECK</li>
+		<li>VENDOR_LARGE_DATA</li>
+		<li>VENDOR_LARGE_DATA_REF</li>
+		<li>WHITE_ALL_IN_ONE_CLS</li>
+		<li>WHITE_ALL_IN_ONE_CLS_COMPOUND_PK_REF</li>
+		<li>WHITE_ALL_IN_ONE_CLS_NORMAL_COL_REF</li>
+		<li>WHITE_BINARY</li>
+		<li>WHITE_COLUMN_EXCEPT</li>
+		<li>WHITE_COMPOUND_PK</li>
+		<li>WHITE_COMPOUND_PK_REF</li>
+		<li>WHITE_COMPOUND_PK_REF_NEST</li>
+		<li>WHITE_DELIMITER</li>
+		<li>WHITE_LOAD_DATA</li>
+		<li>WHITE_MYSELF</li>
+		<li>WHITE_MYSELF_CHECK</li>
+		<li>WHITE_NO_PK</li>
+		<li>WHITE_PG_RESERV</li>
+		<li>WHITE_PG_RESERV_REF</li>
+		<li>WHITE_QUOTED</li>
+		<li>WHITE_QUOTED_REF</li>
+		<li>WHITE_SELF_REFERENCE</li>
+		<li>WHITE_TABLE_EXCEPT_GEN_HEAD</li>
+		<li>WHITE_TABLE_EXCEPT_GEN_ONLY</li>
+		<li>WHITE_TABLE_EXCEPT_GEN_REF</li>
+		<li>WHITE_THE_LONG_AND_WINDING_TABLE_AND_COLUMN</li>
+		<li>WHITE_UQ_REFERENCE</li>
+		<li>WHITE_UQ_REFERENCE_REF</li>
+		<li>WHITE_UQ_REFERENCE_REF_NEST</li>
+		<li>WITHDRAWAL_REASON</li>
+		<li>SUMMARY_PRODUCT</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/06/21 19:11:08</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_SERVICE</h4>
+		<div class="change-table-content">
+			<h5>Add UQ</h5>
+			<ul class="column-content">
+				<li>MEMBER_ID</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>FK_MEMBER_SERVICE_MEMBER</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/06/17 12:35:42</h2>
+	<p class="tablecount"><span class="dt">table count: </span>44&nbsp;-&gt;&nbsp;45</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>SUMMARY_PRODUCT</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/06/17 12:05:47</h2>
+	<p class="tablecount"><span class="dt">table count: </span>45&nbsp;-&gt;&nbsp;44</p>
+
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>SUMMARY_PRODUCT</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/05/20 22:55:56</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER</h4>
+		<div class="change-table-content">
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>REGISTER_PROCESS</li>
+				<li>UPDATE_PROCESS</li>
+			</ul>
+		</div>
+		<h4>MEMBER_ADDRESS</h4>
+		<div class="change-table-content">
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>REGISTER_PROCESS</li>
+				<li>UPDATE_PROCESS</li>
+			</ul>
+		</div>
+		<h4>MEMBER_SECURITY</h4>
+		<div class="change-table-content">
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>REGISTER_PROCESS</li>
+				<li>UPDATE_PROCESS</li>
+			</ul>
+		</div>
+		<h4>MEMBER_SERVICE</h4>
+		<div class="change-table-content">
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>REGISTER_PROCESS</li>
+				<li>UPDATE_PROCESS</li>
+			</ul>
+		</div>
+		<h4>MEMBER_WITHDRAWAL</h4>
+		<div class="change-table-content">
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>REGISTER_PROCESS</li>
+				<li>UPDATE_PROCESS</li>
+				<li>VERSION_NO</li>
+			</ul>
+		</div>
+		<h4>PRODUCT</h4>
+		<div class="change-table-content">
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>REGISTER_PROCESS</li>
+				<li>UPDATE_PROCESS</li>
+			</ul>
+		</div>
+		<h4>PURCHASE</h4>
+		<div class="change-table-content">
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>REGISTER_PROCESS</li>
+				<li>UPDATE_PROCESS</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/05/14 20:22:19</h2>
+	<p class="tablecount"><span class="dt">table count: </span>46&nbsp;-&gt;&nbsp;45</p>
+
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>MEMBER_TEST</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/05/14 19:53:47</h2>
+	<p class="tablecount"><span class="dt">table count: </span>45&nbsp;-&gt;&nbsp;46</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>MEMBER_TEST</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/05/05 23:55:37</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_SERVICE</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>SERVICE_POINT_COUNT</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>POINT_COUNT</li>
+			</ul>
+			<h5>Change Index</h5>
+			<dl class="column-content">
+				<dt>IX_MEMBER_SERVICE_POINT_COUNT</dt>
+				<dd><span>Column</span>POINT_COUNT&nbsp;-&gt;&nbsp;SERVICE_POINT_COUNT</dd>
+			</dl>
+		</div>
+		<h4>SERVICE_RANK</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>SERVICE_POINT_INCIDENCE</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>POINT_INCIDENCE</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/05/05 09:42:20</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_SECURITY</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>REMINDER_USE_COUNT</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/05/05 00:43:39</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_SERVICE</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>MEMBER_SERVICE_ID</li>
+			</ul>
+			<h5>Change PK</h5>
+			<dl class="column-content">
+				<dt>PRIMARY</dt>
+				<dd><span>Column</span>MEMBER_ID&nbsp;-&gt;&nbsp;MEMBER_SERVICE_ID</dd>
+			</dl>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>FK_MEMBER_SERVICE_MEMBER</li>
+			</ul>
+		</div>
+		<h4>PRODUCT_STATUS</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>DISPLAY_ORDER</li>
+			</ul>
+			<h5>Add UQ</h5>
+			<ul class="column-content">
+				<li>DISPLAY_ORDER</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/04/29 21:53:31</h2>
+	<p class="tablecount"><span class="dt">table count: </span>44&nbsp;-&gt;&nbsp;45</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_THE_LONG_AND_WINDING_TABLE_AND_COLUMN</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/04/23 21:47:56</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>IX_LARGE_DATA_STRING</li>
+				<li>IX_LARGE_DATA_NUMERIC_INTEGER</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+				<li>IX_LARGE_DATA_REF_DATE</li>
+				<li>IX_LARGE_DATA_REF_TIMESTAMP</li>
+				<li>IX_LARGE_DATA_REF_NULLABLE_DEC</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/04/23 21:40:52</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>IX_LARGE_DATA_STRING</li>
+				<li>IX_LARGE_DATA_NUMERIC_INTEGER</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+				<li>IX_LARGE_DATA_REF_DATE</li>
+				<li>IX_LARGE_DATA_REF_TIMESTAMP</li>
+				<li>IX_LARGE_DATA_REF_NULLABLE_DEC</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/04/17 23:17:46</h2>
+	<p class="tablecount"><span class="dt">table count: </span>40&nbsp;-&gt;&nbsp;44</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>MEMBER_SERVICE</li>
+		<li>PRODUCT_CATEGORY</li>
+		<li>REGION</li>
+		<li>SERVICE_RANK</li>
+	</ul>
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_ADDRESS</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>REGION_ID</li>
+			</ul>
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_MEMBER_ADDRESS_REGION</li>
+				<li>FK_MEMBER_ADDRESS_MEMBER</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>FK_MEMBER_ADDRESS_REGION</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>MEMBER_ID_2</li>
+			</ul>
+		</div>
+		<h4>MEMBER_LOGIN</h4>
+		<div class="change-table-content">
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>MEMBER_ID_2</li>
+			</ul>
+		</div>
+		<h4>MEMBER_SECURITY</h4>
+		<div class="change-table-content">
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>MEMBER_ID</li>
+			</ul>
+		</div>
+		<h4>MEMBER_STATUS</h4>
+		<div class="change-table-content">
+			<h5>Delete UQ</h5>
+			<ul class="column-content">
+				<li>MEMBER_STATUS_NAME</li>
+			</ul>
+		</div>
+		<h4>MEMBER_WITHDRAWAL</h4>
+		<div class="change-table-content">
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>MEMBER_ID</li>
+			</ul>
+		</div>
+		<h4>PRODUCT</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>PRODUCT_CATEGORY_CODE</li>
+				<li>REGULAR_PRICE</li>
+			</ul>
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_PRODUCT_PRODUCT_CATEGORY</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>FK_PRODUCT_PRODUCT_CATEGORY</li>
+			</ul>
+		</div>
+		<h4>PRODUCT_STATUS</h4>
+		<div class="change-table-content">
+			<h5>Delete UQ</h5>
+			<ul class="column-content">
+				<li>PRODUCT_STATUS_NAME</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/04/07 18:25:05</h2>
+	<p class="tablecount"><span class="dt">table count: </span>41&nbsp;-&gt;&nbsp;40</p>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_TABLE_EXCEPT_GEN_HEAD</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_WHITE_TABLE_EXCEPT_GEN_HEAD_NOMETA</li>
+			</ul>
+		</div>
+		<h4>WHITE_TABLE_EXCEPT_GEN_ONLY</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_WHITE_TABLE_EXCEPT_GEN_ONLY_NOMETA</li>
+			</ul>
+		</div>
+	</div>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_TABLE_EXCEPT_NOMETA</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/04/07 18:23:41</h2>
+	<p class="tablecount"><span class="dt">table count: </span>39&nbsp;-&gt;&nbsp;41</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_TABLE_EXCEPT_GEN_HEAD</li>
+		<li>WHITE_TABLE_EXCEPT_GEN_ONLY</li>
+		<li>WHITE_TABLE_EXCEPT_NOMETA</li>
+	</ul>
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_TABLE_EXCEPT_GEN_REF</h4>
+		<div class="change-table-content">
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_WHITE_TABLE_EXCEPT_GEN_REF_ONLY</li>
+			</ul>
+		</div>
+	</div>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_TABLE_EXCEPT_GEN_TOP</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/04/07 18:17:58</h2>
+	<p class="tablecount"><span class="dt">table count: </span>40&nbsp;-&gt;&nbsp;39</p>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_TABLE_EXCEPT_GEN_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_WHITE_TABLE_EXCEPT_GEN_REF_ONLY</li>
+			</ul>
+		</div>
+	</div>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_TABLE_EXCEPT_GEN_ONLY</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/04/07 17:52:18</h2>
+	<p class="tablecount"><span class="dt">table count: </span>37&nbsp;-&gt;&nbsp;40</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_TABLE_EXCEPT_GEN_ONLY</li>
+		<li>WHITE_TABLE_EXCEPT_GEN_REF</li>
+		<li>WHITE_TABLE_EXCEPT_GEN_TOP</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/04/04 15:55:00</h2>
+	<p class="tablecount"><span class="dt">table count: </span>36&nbsp;-&gt;&nbsp;37</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_BINARY</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/04/03 20:10:04</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_DELIMITER</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>STRING_CONVERTED</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/01/15 15:43:00</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_PG_RESERV</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>CASE</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>PACKAGE</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>DEFAULT</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>NEW</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>NATIVE</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>VOID</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>PUBLIC</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>PROTECTED</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>PRIVATE</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>INTERFACE</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>ABSTRACT</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>FINAL</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>FINALLY</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>RETURN</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>DOUBLE</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>FLOAT</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>SHORT</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>TYPE</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+			</dl>
+		</div>
+		<h4>WHITE_PG_RESERV_REF</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>CLASS</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/01/15 11:15:22</h2>
+	<p class="tablecount"><span class="dt">table count: </span>35&nbsp;-&gt;&nbsp;36</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_QUOTED_REF</li>
+	</ul>
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_QUOTED</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>SELECT</li>
+				<li>FROM</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>QUOTED_ID</li>
+				<li>QUOTED_NAME</li>
+				<li>ORDER</li>
+			</ul>
+			<h5>Change PK</h5>
+			<dl class="column-content">
+				<dt>PRIMARY</dt>
+				<dd><span>Column</span>QUOTED_ID&nbsp;-&gt;&nbsp;SELECT</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/01/14 16:47:53</h2>
+	<p class="tablecount"><span class="dt">table count: </span>34&nbsp;-&gt;&nbsp;35</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_LOAD_DATA</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2011/01/12 20:46:10</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_QUOTED</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>ORDER</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/12/12 23:47:34</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_WITHDRAWAL</h4>
+		<div class="change-table-content">
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>MEMBER_ID</li>
+			</ul>
+		</div>
+		<h4>PURCHASE</h4>
+		<div class="change-table-content">
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>MEMBER_ID_2</li>
+				<li>PRODUCT_ID</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/12/12 23:23:07</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_WITHDRAWAL</h4>
+		<div class="change-table-content">
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>MEMBER_ID</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/12/12 23:18:41</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>PURCHASE</h4>
+		<div class="change-table-content">
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>MEMBER_ID_2</li>
+				<li>PRODUCT_ID</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/12/08 15:32:47</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_DELIMITER</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>DELIMITER_ID</dt>
+				<dd><span>Type</span>DECIMAL&nbsp;-&gt;&nbsp;BIGINT</dd>
+				<dd><span>Size</span>16&nbsp;-&gt;&nbsp;19</dd>
+				<dd><span>Identity</span>false&nbsp;-&gt;&nbsp;true</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/12/06 23:59:58</h2>
+	<p class="tablecount"><span class="dt">table count: </span>33&nbsp;-&gt;&nbsp;34</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_ALL_IN_ONE_CLS_COMPOUND_PK_REF</li>
+		<li>WHITE_ALL_IN_ONE_CLS_NORMAL_COL_REF</li>
+	</ul>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_ALL_IN_ONE_CLS_REF</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/12/06 23:29:20</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>MEMBER_ADDRESS</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_MEMBER_ADDRESS_MEMBER</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/12/06 23:04:40</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_ALL_IN_ONE_CLS_REF</h4>
+		<div class="change-table-content">
+			<h5>Change PK</h5>
+			<dl class="column-content">
+				<dt>PRIMARY</dt>
+				<dd><span>Column</span>CLS_REF_ID&nbsp;-&gt;&nbsp;CLS_REF_ID,&nbsp;FOO_CODE,&nbsp;BAR_CODE</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/12/04 11:12:59</h2>
+	<p class="tablecount"><span class="dt">table count: </span>31&nbsp;-&gt;&nbsp;33</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_ALL_IN_ONE_CLS</li>
+		<li>WHITE_ALL_IN_ONE_CLS_REF</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/11/24 00:31:49</h2>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_COMPOUND_PK</li>
+		<li>WHITE_COMPOUND_PK_REF</li>
+		<li>WHITE_COMPOUND_PK_REF_NEST</li>
+	</ul>
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_UQ_REFERENCE_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>COMPOUND_UQ_FIRST_CODE</li>
+				<li>COMPOUND_UQ_SECOND_CODE</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>TWO_OR_MORE_UQ_FIRST_CODE</li>
+				<li>TWO_OR_MORE_UQ_SECOND_CODE</li>
+			</ul>
+			<h5>Add UQ</h5>
+			<ul class="column-content">
+				<li>COMPOUND_UQ_FIRST_CODE</li>
+			</ul>
+			<h5>Delete UQ</h5>
+			<ul class="column-content">
+				<li>TWO_OR_MORE_UQ_FIRST_CODE</li>
+			</ul>
+		</div>
+		<h4>WHITE_UQ_REFERENCE_REF_NEST</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>COMPOUND_UQ_FIRST_CODE</li>
+				<li>COMPOUND_UQ_SECOND_CODE</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>TWO_OR_MORE_UQ_FIRST_CODE</li>
+				<li>TWO_OR_MORE_UQ_SECOND_CODE</li>
+			</ul>
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_WHITE_UQ_REFERENCE_REF_NEST_UQ</dt>
+				<dd><span>Column</span>TWO_OR_MORE_UQ_FIRST_CODE,&nbsp;TWO_OR_MORE_UQ_SECOND_CODE&nbsp;-&gt;&nbsp;COMPOUND_UQ_FIRST_CODE,&nbsp;COMPOUND_UQ_SECOND_CODE</dd>
+			</dl>
+			<h5>Change Index</h5>
+			<dl class="column-content">
+				<dt>FK_WHITE_UQ_REFERENCE_REF_NEST_UQ</dt>
+				<dd><span>Column</span>TWO_OR_MORE_UQ_FIRST_CODE,&nbsp;TWO_OR_MORE_UQ_SECOND_CODE&nbsp;-&gt;&nbsp;COMPOUND_UQ_FIRST_CODE,&nbsp;COMPOUND_UQ_SECOND_CODE</dd>
+			</dl>
+		</div>
+	</div>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_TWO_OR_MORE_PK</li>
+		<li>WHITE_TWO_OR_MORE_PK_REF</li>
+		<li>WHITE_TWO_OR_MORE_PK_REF_NEST</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/11/12 21:58:05</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>LARGE_DATA_REF_ID</dt>
+				<dd><span>Identity</span>true&nbsp;-&gt;&nbsp;false</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/11/12 21:34:23</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>SELF_PARENT_ID</li>
+			</ul>
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_SELF</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/11/10 11:20:23</h2>
+	<p class="tablecount"><span class="dt">table count: </span>30&nbsp;-&gt;&nbsp;31</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_TWO_OR_MORE_PK_REF_NEST</li>
+	</ul>
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_TWO_OR_MORE_PK_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>MULTIPLE_FIRST_ID</li>
+				<li>MULTIPLE_SECOND_ID</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>TWO_OR_MORE_PK_REF_ID</li>
+			</ul>
+			<h5>Change PK</h5>
+			<dl class="column-content">
+				<dt>PRIMARY</dt>
+				<dd><span>Column</span>TWO_OR_MORE_PK_REF_ID&nbsp;-&gt;&nbsp;MULTIPLE_FIRST_ID,&nbsp;MULTIPLE_SECOND_ID</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/11/10 11:05:42</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_TWO_OR_MORE_PK_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>TWO_OR_MORE_PK_REF_ID</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>MULTIPLE_PK_REF_ID</li>
+			</ul>
+			<h5>Change PK</h5>
+			<dl class="column-content">
+				<dt>PRIMARY</dt>
+				<dd><span>Column</span>MULTIPLE_PK_REF_ID&nbsp;-&gt;&nbsp;TWO_OR_MORE_PK_REF_ID</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/11/10 11:03:13</h2>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_TWO_OR_MORE_PK</li>
+		<li>WHITE_TWO_OR_MORE_PK_REF</li>
+	</ul>
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_UQ_REFERENCE_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>TWO_OR_MORE_UQ_FIRST_CODE</li>
+				<li>TWO_OR_MORE_UQ_SECOND_CODE</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>MULTIPLE_UQ_FIRST_CODE</li>
+				<li>MULTIPLE_UQ_SECOND_CODE</li>
+			</ul>
+			<h5>Add UQ</h5>
+			<ul class="column-content">
+				<li>TWO_OR_MORE_UQ_FIRST_CODE</li>
+			</ul>
+			<h5>Delete UQ</h5>
+			<ul class="column-content">
+				<li>MULTIPLE_UQ_FIRST_CODE</li>
+			</ul>
+		</div>
+		<h4>WHITE_UQ_REFERENCE_REF_NEST</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>TWO_OR_MORE_UQ_FIRST_CODE</li>
+				<li>TWO_OR_MORE_UQ_SECOND_CODE</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>MULTIPLE_UQ_FIRST_CODE</li>
+				<li>MULTIPLE_UQ_SECOND_CODE</li>
+			</ul>
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_WHITE_UQ_REFERENCE_REF_NEST_UQ</dt>
+				<dd><span>Column</span>MULTIPLE_UQ_FIRST_CODE,&nbsp;MULTIPLE_UQ_SECOND_CODE&nbsp;-&gt;&nbsp;TWO_OR_MORE_UQ_FIRST_CODE,&nbsp;TWO_OR_MORE_UQ_SECOND_CODE</dd>
+			</dl>
+			<h5>Change Index</h5>
+			<dl class="column-content">
+				<dt>FK_WHITE_UQ_REFERENCE_REF_NEST_UQ</dt>
+				<dd><span>Column</span>MULTIPLE_UQ_FIRST_CODE,&nbsp;MULTIPLE_UQ_SECOND_CODE&nbsp;-&gt;&nbsp;TWO_OR_MORE_UQ_FIRST_CODE,&nbsp;TWO_OR_MORE_UQ_SECOND_CODE</dd>
+			</dl>
+		</div>
+	</div>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_MULTIPLE_PK</li>
+		<li>WHITE_MULTIPLE_PK_REF</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/11/10 10:40:59</h2>
+	<p class="tablecount"><span class="dt">table count: </span>28&nbsp;-&gt;&nbsp;30</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_MULTIPLE_PK</li>
+		<li>WHITE_MULTIPLE_PK_REF</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/11/10 09:46:46</h2>
+	<p class="tablecount"><span class="dt">table count: </span>27&nbsp;-&gt;&nbsp;28</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_UQ_REFERENCE_REF_NEST</li>
+	</ul>
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_UQ_REFERENCE_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>MULTIPLE_UQ_FIRST_CODE</li>
+				<li>MULTIPLE_UQ_SECOND_CODE</li>
+			</ul>
+			<h5>Add UQ</h5>
+			<ul class="column-content">
+				<li>MULTIPLE_UQ_FIRST_CODE</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/11/10 03:04:26</h2>
+	<p class="tablecount"><span class="dt">table count: </span>25&nbsp;-&gt;&nbsp;27</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_NO_PK</li>
+		<li>WHITE_UQ_REFERENCE</li>
+		<li>WHITE_UQ_REFERENCE_REF</li>
+	</ul>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_NOT_PK</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/23 12:16:31</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_DELIMITER</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>NUMBER_NULLABLE</li>
+				<li>STRING_CONVERTED</li>
+				<li>STRING_NON_CONVERTED</li>
+				<li>DATE_DEFAULT</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>DELIMITER_NUMBER</li>
+				<li>DELIMITER_STRING</li>
+				<li>DELIMITER_DATE</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/23 11:46:04</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>IX_LARGE_DATA_STRING</li>
+				<li>IX_LARGE_DATA_NUMERIC_INTEGER</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>IX_LARGE_DATA_REF_DATE</li>
+				<li>IX_LARGE_DATA_REF_TIMESTAMP</li>
+				<li>IX_LARGE_DATA_REF_NULLABLE_DEC</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/23 11:07:50</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>IX_LARGE_DATA_STRING</li>
+				<li>IX_LARGE_DATA_NUMERIC_INTEGER</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>IX_LARGE_DATA_REF_DATE</li>
+				<li>IX_LARGE_DATA_REF_TIMESTAMP</li>
+				<li>IX_LARGE_DATA_REF_NULLABLE_DEC</li>
+			</ul>
+		</div>
+		<h4>WHITE_DELIMITER</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>DELIMITER_DATE</li>
+			</ul>
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>DELIMITER_STRING</dt>
+				<dd><span>Not Null</span>false&nbsp;-&gt;&nbsp;true</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/23 10:48:39</h2>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_DELIMITER</li>
+	</ul>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>WHITE_TOKEN</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/22 18:35:38</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_PG_RESERV</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>VOID</li>
+				<li>PUBLIC</li>
+				<li>PROTECTED</li>
+				<li>PRIVATE</li>
+				<li>INTERFACE</li>
+				<li>ABSTRACT</li>
+				<li>FINAL</li>
+				<li>FINALLY</li>
+				<li>RETURN</li>
+				<li>DOUBLE</li>
+				<li>FLOAT</li>
+				<li>SHORT</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/22 17:50:07</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_PG_RESERV</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>CASE</li>
+				<li>PACKAGE</li>
+				<li>DEFAULT</li>
+				<li>NEW</li>
+				<li>NATIVE</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/22 01:38:27</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>NULLABLE_DECIMAL_INDEX</li>
+				<li>NULLABLE_DECIMAL_NO_INDEX</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>NULLABLE_INTEGER_INDEX</li>
+				<li>NULLABLE_INTEGER_NO_INDEX</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>IX_VENDOR_LARGE_DATA_REF_NULLABLE_DECIMAL</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>IX_VENDOR_LARGE_DATA_REF_NULLABLE_INTEGER</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/22 01:16:35</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>NUMERIC_INTEGER_INDEX</dt>
+				<dd><span>Size</span>12&nbsp;-&gt;&nbsp;8</dd>
+				<dt>NUMERIC_INTEGER_NO_INDEX</dt>
+				<dd><span>Size</span>12&nbsp;-&gt;&nbsp;8</dd>
+			</dl>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>IX_VENDOR_LARGE_DATA_INTFLG</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>TIMESTAMP_INDEX</li>
+				<li>TIMESTAMP_NO_INDEX</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>DATETIME_INDEX</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>IX_VENDOR_LARGE_DATA_REF_TIMESTAMP</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>IX_VENDOR_LARGE_DATA_REF_DATETIME</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/22 00:37:52</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>IX_VENDOR_LARGE_DATA_STRING</li>
+				<li>IX_VENDOR_LARGE_DATA_INTFLG</li>
+				<li>IX_VENDOR_LARGE_DATA_NUMERIC_INTEGER_INDEX</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_DATE</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_DATETIME</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_NULLABLE_INTEGER</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/22 00:29:59</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>IX_VENDOR_LARGE_DATA_STRING</li>
+				<li>IX_VENDOR_LARGE_DATA_INTFLG</li>
+				<li>IX_VENDOR_LARGE_DATA_NUMERIC_INTEGER_INDEX</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_DATE</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_DATETIME</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_NULLABLE_INTEGER</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/22 00:20:33</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>NUMERIC_INTEGER_NO_INDEX</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>INTEGER_INDEX</li>
+				<li>INTEGER_NO_INDEX</li>
+				<li>NUMERIC_DECIMAL_INDEX</li>
+				<li>DATE_INDEX</li>
+				<li>DATE_NO_INDEX</li>
+				<li>DATETIME_INDEX</li>
+				<li>NULLABLE_INTEGER_INDEX</li>
+				<li>NULLABLE_STRING_INDEX</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>IX_VENDOR_LARGE_DATA_INTEGER</li>
+				<li>IX_VENDOR_LARGE_DATA_NUMERIC_DECIMAL</li>
+				<li>IX_VENDOR_LARGE_DATA_DATE</li>
+				<li>IX_VENDOR_LARGE_DATA_DATETIME</li>
+				<li>IX_VENDOR_LARGE_DATA_NULLABLE_INTEGER</li>
+				<li>IX_VENDOR_LARGE_DATA_NULLABLE_STRING</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>DATE_INDEX</li>
+				<li>DATE_NO_INDEX</li>
+				<li>DATETIME_INDEX</li>
+				<li>NULLABLE_INTEGER_INDEX</li>
+				<li>NULLABLE_INTEGER_NO_INDEX</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>REF_STRING_INDEX</li>
+				<li>REF_STRING_NO_INDEX</li>
+				<li>REF_STRING_UNIQUE_INDEX</li>
+				<li>REF_INTEGER_INDEX</li>
+				<li>REF_INTEGER_NO_INDEX</li>
+				<li>REF_INTFLG_INDEX</li>
+				<li>REF_NUMERIC_DECIMAL_INDEX</li>
+				<li>REF_NUMERIC_INTEGER_INDEX</li>
+				<li>REF_DATE_INDEX</li>
+				<li>REF_DATE_NO_INDEX</li>
+				<li>REF_DATETIME_INDEX</li>
+				<li>REF_NULLABLE_INTEGER_INDEX</li>
+				<li>REF_NULLABLE_STRING_INDEX</li>
+			</ul>
+			<h5>Delete UQ</h5>
+			<ul class="column-content">
+				<li>REF_STRING_UNIQUE_INDEX</li>
+			</ul>
+			<h5>Change Index</h5>
+			<dl class="column-content">
+				<dt>IX_VENDOR_LARGE_DATA_REF_DATE</dt>
+				<dd><span>Column</span>REF_DATE_INDEX&nbsp;-&gt;&nbsp;DATE_INDEX</dd>
+				<dt>IX_VENDOR_LARGE_DATA_REF_DATETIME</dt>
+				<dd><span>Column</span>REF_DATETIME_INDEX&nbsp;-&gt;&nbsp;DATETIME_INDEX</dd>
+				<dt>IX_VENDOR_LARGE_DATA_REF_NULLABLE_INTEGER</dt>
+				<dd><span>Column</span>REF_NULLABLE_INTEGER_INDEX&nbsp;-&gt;&nbsp;NULLABLE_INTEGER_INDEX</dd>
+			</dl>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>IX_VENDOR_LARGE_DATA_REF_INTEGER</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_INTFLG</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_NUMERIC_DECIMAL</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_NUMERIC_INTEGER_INDEX</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_STRING</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_NULLABLE_STRING</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/22 00:14:09</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>IX_VENDOR_LARGE_DATA_INTEGER</li>
+				<li>IX_VENDOR_LARGE_DATA_INTFLG</li>
+				<li>IX_VENDOR_LARGE_DATA_NUMERIC_DECIMAL</li>
+				<li>IX_VENDOR_LARGE_DATA_NUMERIC_INTEGER_INDEX</li>
+				<li>IX_VENDOR_LARGE_DATA_STRING</li>
+				<li>IX_VENDOR_LARGE_DATA_DATE</li>
+				<li>IX_VENDOR_LARGE_DATA_DATETIME</li>
+				<li>IX_VENDOR_LARGE_DATA_NULLABLE_INTEGER</li>
+				<li>IX_VENDOR_LARGE_DATA_NULLABLE_STRING</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_INTEGER</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_INTFLG</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_NUMERIC_DECIMAL</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_NUMERIC_INTEGER_INDEX</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_STRING</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_DATE</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_DATETIME</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_NULLABLE_INTEGER</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_NULLABLE_STRING</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/22 00:00:01</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>IX_VENDOR_LARGE_DATA_INTEGER</li>
+				<li>IX_VENDOR_LARGE_DATA_INTFLG</li>
+				<li>IX_VENDOR_LARGE_DATA_NUMERIC_DECIMAL</li>
+				<li>IX_VENDOR_LARGE_DATA_NUMERIC_INTEGER_INDEX</li>
+				<li>IX_VENDOR_LARGE_DATA_STRING</li>
+				<li>IX_VENDOR_LARGE_DATA_DATE</li>
+				<li>IX_VENDOR_LARGE_DATA_DATETIME</li>
+				<li>IX_VENDOR_LARGE_DATA_NULLABLE_INTEGER</li>
+				<li>IX_VENDOR_LARGE_DATA_NULLABLE_STRING</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_INTEGER</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_INTFLG</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_NUMERIC_DECIMAL</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_NUMERIC_INTEGER_INDEX</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_STRING</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_DATE</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_DATETIME</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_NULLABLE_INTEGER</li>
+				<li>IX_VENDOR_LARGE_DATA_REF_NULLABLE_STRING</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/21 22:22:05</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>STRING_NO_INDEX</li>
+				<li>INTEGER_NO_INDEX</li>
+				<li>DATE_NO_INDEX</li>
+			</ul>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>REF_STRING_NO_INDEX</li>
+				<li>REF_INTEGER_NO_INDEX</li>
+				<li>REF_DATE_NO_INDEX</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/21 21:11:44</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF_DATA</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/21 20:01:26</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>NULLABLE_INTEGER_INDEX</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>NULLABLE_STRING_INDEX</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+			</dl>
+		</div>
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>REF_NULLABLE_INTEGER_INDEX</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+				<dt>REF_NULLABLE_STRING_INDEX</dt>
+				<dd><span>Not Null</span>true&nbsp;-&gt;&nbsp;false</dd>
+			</dl>
+			<h5>Delete FK</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>FK_VENDOR_LARGE_DATA_REF</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/21 18:58:55</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>VENDOR_LARGE_DATA_REF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>LARGE_DATA_ID</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>REF_LARGE_DATA_ID</li>
+			</ul>
+			<h5>Change FK</h5>
+			<dl class="column-content">
+				<dt>FK_VENDOR_LARGE_DATA_REF</dt>
+				<dd><span>Column</span>REF_LARGE_DATA_ID&nbsp;-&gt;&nbsp;LARGE_DATA_ID</dd>
+			</dl>
+			<h5>Change Index</h5>
+			<dl class="column-content">
+				<dt>FK_VENDOR_LARGE_DATA_REF</dt>
+				<dd><span>Column</span>REF_LARGE_DATA_ID&nbsp;-&gt;&nbsp;LARGE_DATA_ID</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/21 13:11:59</h2>
+	<p class="tablecount"><span class="dt">table count: </span>23&nbsp;-&gt;&nbsp;25</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>VENDOR_LARGE_DATA</li>
+		<li>VENDOR_LARGE_DATA_REF</li>
+	</ul>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/20 02:34:31</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_PG_RESERV</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>TYPE</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/20 02:15:57</h2>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>WHITE_PG_RESERV</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>RESERV_NAME</dt>
+				<dd><span>Type</span>INT&nbsp;-&gt;&nbsp;VARCHAR</dd>
+				<dd><span>Size</span>10&nbsp;-&gt;&nbsp;32</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><span class="dt">Diff Date: </span>2010/10/20 01:44:37</h2>
+	<p class="tablecount"><span class="dt">table count: </span>21&nbsp;-&gt;&nbsp;23</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>WHITE_PG_RESERV</li>
+		<li>WHITE_PG_RESERV_REF</li>
+	</ul>
+</div>
+
+</body>
+</html>

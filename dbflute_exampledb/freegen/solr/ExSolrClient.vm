@@ -1,0 +1,14 @@
+package ${request.package}.client.ex;
+
+import ${request.package}.client.bs.${request.tableMap.baseClientClassName};
+
+/**
+ * Solr検索ClientのBaseクラス
+ * string, tint, tlong, tdate, text_ja, text_cjkのみに対応しています
+ *
+ * 独自メソッドはここに追加してください
+ * @author FreeGen
+ */
+public class ${tableMap.extendedClientClassName} extends ${tableMap.baseClientClassName} {
+
+}

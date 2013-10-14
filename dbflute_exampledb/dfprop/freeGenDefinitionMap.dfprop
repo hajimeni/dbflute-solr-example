@@ -1,0 +1,33 @@
+map:{
+    #SOLR-EXAMPLE
+    ; SolrMemberGen = map:{
+        ; resourceMap = map:{
+            ; resourceType = SOLR
+            ; resourceFile = ../solr-4.5.0/example/example-dbflute/solr/DIH/conf/schema.xml
+        }
+        ; outputMap = map:{
+            ; templateFile = unused
+            ; outputDirectory = ../src/main/java
+            ; package = jp.bizreach.example.solr
+            ; className = unused
+        }
+        ; tableMap = map:{
+            #Schema Name
+            ; baseSchemaName = Member
+
+            #Member Bean
+            ; baseBeanClassName = BsMemberSolrBean
+            ; extendedBeanClassName = MemberSolrBean
+            #Member Query Bean
+            ; baseQueryBeanClassName = BsMemberSolrQueryBean
+            ; extendedQueryBeanClassName = MemberSolrQueryBean
+            #Member Client
+            ; baseClientClassName = BsMemberSolrClient
+            ; extendedClientClassName = MemberSolrClient
+            ; mappingMap = map:{ type = map:{ string = String; text_ja = String; tint = Integer; tlong = Long; tdate = Date }}
+            #Member Index Bean
+            ; baseIndexBeanClassName = BsMemberSolrIndexBean
+            ; extendedIndexBeanClassName = MemberSolrIndexBean
+        }
+    }
+}

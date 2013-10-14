@@ -1,0 +1,26 @@
+package ${request.package}.specify.bs;
+
+import jp.bizreach.example.solr.base.AbstractSolrSpecifyBean;
+import jp.bizreach.example.solr.meta.${tableMap.baseSchemaName}SolrMeta;
+
+
+/**
+ * Solr検索のフィールド絞り込み保存用BeanのBaseクラス
+ * string, tint, tlong, tdate, tdouble, text_ja, text_cjkのみに対応しています
+ * @author FreeGen
+ * @author nishiyama
+ */
+public class Bs${tableMap.baseSchemaName}SolrSpecifyBean extends AbstractSolrSpecifyBean {
+
+    // ===================================================================================
+    //                                                                        SpricyColumn
+    //                                                                        ============
+#foreach ($column in $request.columnList)
+#if(${column.stored})
+    public void field${column.capCamelName}() {
+		this.addSpecifyField(${tableMap.baseSchemaName}SolrMeta.FIELD_${column.name});
+    }
+
+#end
+#end
+}

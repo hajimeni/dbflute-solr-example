@@ -1,0 +1,36 @@
+package ${request.package}.meta;
+
+import jp.bizreach.example.solr.base.AbstractSolrClient;
+
+/**
+ * Solr検索ClientのBaseクラス
+ * string, tint, tlong, tdate, tdouble, text_ja, text_cjkのみに対応しています
+ * @author FreeGen
+ */
+public class ${tableMap.baseSchemaName}SolrMeta extends AbstractSolrClient {
+
+    // ===================================================================================
+    //                                                                       SolrFieldName
+    //                                                                       =============
+
+#foreach ($column in $request.columnList)
+	/** ${column.name} */
+	public static final String FIELD_${column.name} = "${column.name}";
+
+#end
+
+    // ===================================================================================
+    //                                                                         Field Names
+    //                                                                         ===========
+
+	public static final String[] STORED_FIELD_NAMES = {
+#set ($count = 0)
+#foreach ($column in $request.columnList)
+#if(${column.stored})
+#if($count != 0),#end FIELD_${column.name}
+#end
+#set ($count = $count + 1)
+#end
+	};
+
+}

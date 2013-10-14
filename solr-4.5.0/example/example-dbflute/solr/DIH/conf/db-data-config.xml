@@ -1,0 +1,64 @@
+<dataConfig>
+	<dataSource type="JdbcDataSource"
+		driver="com.mysql.jdbc.Driver" 
+		url="jdbc:mysql://localhost:3306/exampledb"
+		user="exampledb"
+		password="exampledb"
+		batchSize="-1" 
+		useUnicode="true" characterEncoding="utf8"
+		useOldUTF8Behavior="true" readOnly="true"
+	/> 
+	    
+	<document>
+	   	<entity name="member"
+	   		query="select m.member_id id,
+	   				m.member_id member_id, m.member_name member_name, m.member_account member_account, m.member_status_code member_status_cd,
+	   				/* m.formalized_datetime formalized_datetime */ 
+	   				m.birthdate birthdate
+	   			from member m"
+	   		deltaQuery="select m.member_id id 
+	   				from member m 
+	   				where m.update_datetime > '${dataimporter.last_index_time}'"
+	   		>
+	   		<field column="id" name="id" />
+	   			
+	   		<field column="member_id" name="member_id" />
+	   		<field column="member_name" name="member_name" />
+	   		<field column="member_account" name="member_account" />
+	   		<field column="member_status_cd" name="member_status_cd" />
+<!-- 
+	   		<field column="formalized_datetime" name="formalized_datetime" />
+-->
+	   		<field column="birthdate" name="birthdate" />
+	   		
+	   			<entity name="purchase"
+	   				query="select pr.purchase_id id,
+	   						pr.purchase_id purchase_id,
+	   						
+	   						p.product_id product_id, p.product_name product_name,
+	   						pc.product_category_code product_category_code, pc.product_category_name product_category_name
+	   					from purchase pr 
+	   					inner join product p on pr.product_id = p.product_id
+	   					inner join product_category pc on p.product_category_code = pc.product_category_code
+	   					where pr.member_id='${member.id}'"
+	   				deltaQuery="select pr.purchase_id id 
+	   						from purhcase pr
+	   						where pr.update_datetime > '${dataimporter.last_index_time}'"
+	   				parentDeltaQuery="select pr.member_id 
+	   							from purchase pr 
+	   							where pr.purchase_id ='${purchase.id}'">
+
+
+	   		<field column="purchase_id" name="purchase_id" />
+
+	   		<field column="product_id" name="product_id" />
+	   		<field column="product_name" name="product_name" />
+	   		
+	   		<field column="product_category_code," name="product_category_code" />
+	   		<field column="product_category_name" name="product_category_name" />
+
+	   			</entity>
+	   	</entity>
+    </document>
+</dataConfig>
+

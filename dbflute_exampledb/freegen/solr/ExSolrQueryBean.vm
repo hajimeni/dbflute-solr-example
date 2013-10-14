@@ -1,0 +1,14 @@
+package ${request.package}.query.ex;
+
+import ${request.package}.query.bs.${request.tableMap.baseQueryBeanClassName};
+
+/**
+ * Solr検索クエリ生成用のQueryBeanのBaseクラス
+ * string, tint, tlong, tdate, text_ja, text_cjkのみに対応しています
+ *
+ * 独自メソッドはここに追加してください
+ * @author FreeGen
+ */
+public class ${tableMap.extendedQueryBeanClassName} extends ${tableMap.baseQueryBeanClassName} {
+
+}

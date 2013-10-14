@@ -1,0 +1,81 @@
+package ${request.package}.condition.bs;
+
+import jp.bizreach.example.solr.base.SolrFacetQuery;
+import jp.bizreach.example.solr.base.AbstractSolrConditionBean;
+import jp.bizreach.example.solr.base.SolrQueryBean;
+import jp.bizreach.example.solr.base.SolrQueryBuilder;
+import jp.bizreach.example.solr.base.SolrSpecifyBean;
+import jp.bizreach.example.solr.meta.${tableMap.baseSchemaName}SolrMeta;
+import jp.bizreach.example.solr.query.ex.${tableMap.baseSchemaName}SolrQueryBean;
+import jp.bizreach.example.solr.specify.ex.${tableMap.baseSchemaName}SolrSpecifyBean;
+
+/**
+ * Solr検索条件生成用のConditionBeanのBaseクラス
+ * string, tint, tlong, tdate, tdouble, text_ja, text_cjkのみに対応しています
+ * @author FreeGen
+ */
+public class Bs${tableMap.baseSchemaName}SolrConditionBean extends AbstractSolrConditionBean {
+
+    // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
+	protected ${tableMap.baseSchemaName}SolrQueryBean queryBean;
+
+	protected ${tableMap.baseSchemaName}SolrSpecifyBean specifyBean;
+
+	public ${tableMap.baseSchemaName}SolrQueryBean query() {
+		if (this.queryBean == null) {
+			this.queryBean = new ${tableMap.baseSchemaName}SolrQueryBean();
+		}
+		return this.queryBean;
+	}
+
+	public ${tableMap.baseSchemaName}SolrSpecifyBean specify() {
+		this.setSpecified(true);
+		if (this.specifyBean == null) {
+			this.specifyBean = new ${tableMap.baseSchemaName}SolrSpecifyBean();
+		}
+		return this.specifyBean;
+	}
+
+	@Override
+	public String[] getAllFields() {
+		return ${tableMap.baseSchemaName}SolrMeta.STORED_FIELD_NAMES;
+	}
+
+	@Override
+	protected SolrQueryBean getQueryBean() {
+		return this.query();
+	}
+
+	@Override
+	protected SolrSpecifyBean getSpecifyBean() {
+		return this.specify();
+	}
+
+	public void addFacetQuery(SolrFacetQuery<${tableMap.baseSchemaName}SolrQueryBean> facetQuery) {
+		${tableMap.baseSchemaName}SolrQueryBean sqb = new ${tableMap.baseSchemaName}SolrQueryBean();
+		facetQuery.query(sqb);
+		this.addFacetQuery(sqb);
+	}
+
+	/**
+	 * クエリー条件表示
+	 * @return
+	 */
+	@Override
+	public String toDisplayCondition() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("\n /======== Solr Condition \n");
+		sb.append("  ==== [query = ");
+		sb.append(SolrQueryBuilder.concatEachCondition(getQueryBean().getQueryList())).append(" ]\n");
+		sb.append("  ==== [pageNumber = ").append(getPageNumer()).append(" , pageSize = ").append(getPageSize())
+				.append(" ]\n");
+		sb.append("  ==== [field = ").append(getSpecifyBean().toString()).append(" ]\n");
+		sb.append("  ==== [facet = ").append(getFacetQueryDisplayString()).append(" ]\n");
+		sb.append(" ========/");
+
+		return sb.toString();
+	}
+
+}

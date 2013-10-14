@@ -1,0 +1,66 @@
+package ${request.package}.index.bs;
+
+import java.io.Serializable;
+import java.util.Date;
+import jp.bizreach.example.solr.base.AbstractSolrIndexBean;
+import org.apache.solr.client.solrj.beans.Field;
+import java.util.List;
+
+
+/**
+ * Solr Index登録用BeanのBaseクラス<br />
+ * indexd=true もしくは stored=trueが必要
+ * string, tint, tlong, tdate, tdouble, text_ja, text_cjkのみに対応しています
+ * @author FreeGen
+ * @author nishiyama
+ */
+public class ${tableMap.baseIndexBeanClassName} extends AbstractSolrIndexBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	// ===================================================================================
+	//                                                                           Attribute
+	//                                                                           =========
+#foreach ($column in $request.columnList)
+#if($column.multiValued)
+    #set($multiTypeElementLength = $column.type.length() - 2)
+	#set($elementType = $column.type.substring(0, $multiTypeElementLength))
+	#set($propertyType = "List<${elementType}>")
+#else
+	#set($propertyType = $column.type)
+#end
+	/** ${column.name} (${column.nativeType}) */
+	@Field("${column.name}")
+	protected ${propertyType} ${column.uncapCamelName};
+
+#end
+
+	// ===================================================================================
+	//                                                                            Accessor
+	//                                                                            ========
+#foreach ($column in $request.columnList)
+#if($column.multiValued)
+    #set($multiTypeElementLength = $column.type.length() - 2)
+	#set($elementType = $column.type.substring(0, $multiTypeElementLength))
+	#set($propertyType = "List<${elementType}>")
+#else
+	#set($propertyType = $column.type)
+#end
+    public ${propertyType} get${column.capCamelName}() {
+#if(${column.multiValued})
+		if (this.${column.uncapCamelName} == null) { this.${column.uncapCamelName} = newMultiValuedList(); }
+#end
+		return this.${column.uncapCamelName};
+    }
+
+	public void set${column.capCamelName}(${propertyType} value) {
+		this.${column.uncapCamelName} = value;
+    }
+
+#if($column.multiValued)
+	public void add${column.capCamelName}($elementType value) {
+		get${column.capCamelName}().add(value);
+	}
+#end
+#end
+}
