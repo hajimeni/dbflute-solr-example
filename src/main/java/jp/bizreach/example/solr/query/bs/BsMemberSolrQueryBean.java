@@ -43,6 +43,9 @@ public class BsMemberSolrQueryBean extends AbstractSolrQueryBean {
     /** Query Attribute for birthdate (tdate) */
     protected String birthdateQuery;
 
+    /** Query Attribute for formalized_datetime (tdate) */
+    protected String formalizedDatetimeQuery;
+
     /** Query Attribute for purchase_id (tlong) */
     protected String purchaseIdQuery;
 
@@ -557,6 +560,47 @@ public class BsMemberSolrQueryBean extends AbstractSolrQueryBean {
 
 
     // ===========================================================
+    // Query Setter for formalized_datetime (tdate)
+    //                                                  ==========
+
+	/**
+	 * ExistsQuery( q=formalized_datetime:* )
+	 */
+	public void setFormalizedDatetime_Exists() {
+		this.formalizedDatetimeQuery = SolrQueryBuilder.queryBuilderForExists("formalized_datetime");
+	}
+
+	public void setFormalizedDatetime_RangeSearchFrom(Date from) {
+		if (from != null) {
+			setFormalizedDatetime_RangeSearch(from, null);
+		}
+	}
+
+	public void setFormalizedDatetime_RangeSearchTo(Date to) {
+		if (to != null) {
+			setFormalizedDatetime_RangeSearch(null, to);
+		}
+	}
+
+	public void setFormalizedDatetime_RangeSearch(Date from, Date to) {
+		String convertedQuery = SolrQueryBuilder.queryBuilderForRangeSearch("formalized_datetime", from, to);
+		if (StringUtils.isNotEmpty(convertedQuery)) {
+			this.formalizedDatetimeQuery = convertedQuery;
+		}
+	}
+
+	public void addOrderBy_FormalizedDatetime_Desc() {
+		SortClause clause = new SortClause(MemberSolrMeta.FIELD_formalized_datetime, ORDER.desc);
+		solrSortClauseList.add(clause);
+	}
+
+	public void addOrderBy_FormalizedDatetime_Asc() {
+		SortClause clause = new SortClause(MemberSolrMeta.FIELD_formalized_datetime, ORDER.asc);
+		solrSortClauseList.add(clause);
+	}
+
+
+    // ===========================================================
     // Query Setter for purchase_id (tlong)
     //                                                  ==========
 
@@ -1062,6 +1106,10 @@ public class BsMemberSolrQueryBean extends AbstractSolrQueryBean {
 
 		if (StringUtils.isNotEmpty(birthdateQuery)) {
 			queryList.add(birthdateQuery);
+		}
+
+		if (StringUtils.isNotEmpty(formalizedDatetimeQuery)) {
+			queryList.add(formalizedDatetimeQuery);
 		}
 
 		if (StringUtils.isNotEmpty(purchaseIdQuery)) {

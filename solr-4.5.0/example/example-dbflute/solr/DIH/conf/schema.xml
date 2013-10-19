@@ -287,9 +287,7 @@
 
 		<!-- Storeしない -->
 		<field name="birthdate" type="tdate" indexed="true" stored="true" omitNorms="true" />
-<!-- 
 		<field name="formalized_datetime" type="tdate" indexed="true" stored="true" omitNorms="true" />
--->
 		<field name="purchase_id" type="tlong" indexed="true" stored="true" multiValued="true" omitNorms="true" />
 		<field name="product_id" type="tlong" indexed="true" stored="true" multiValued="true" omitNorms="true" />
 		<field name="product_name" type="string" indexed="true" stored="true" multiValued="true" omitNorms="false" />

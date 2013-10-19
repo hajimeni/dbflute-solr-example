@@ -232,6 +232,7 @@ public class BsMemberSolrClient extends AbstractSolrClient {
 , "member_name"
 , "member_account"
 , "birthdate"
+, "formalized_datetime"
 , "purchase_id"
 , "product_id"
 , "product_name"

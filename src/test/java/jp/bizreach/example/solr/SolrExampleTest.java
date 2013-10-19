@@ -21,12 +21,15 @@ public class SolrExampleTest extends ContainerTestCase {
     
     public void test_select() {
         assertNotNull(memberSolrClient);
-        MemberSolrConditionBean sqb = new MemberSolrConditionBean();
-        sqb.query().setMemberName_PrefixSearch("S");
-        sqb.query().setBirthdate_RangeSearchFrom(new HandyDate(new Date()).addYear(-50).getDate());
-        sqb.query().setProductName_PrefixSearch("Glass");
+        MemberSolrConditionBean cb = new MemberSolrConditionBean();
+        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setBirthdate_RangeSearchFrom(new HandyDate(new Date()).addYear(-50).getDate());
+        cb.query().setProductName_PrefixSearch("Glass");
+        cb.query().addOrderBy_Birthdate_Asc();
         
-        SolrPagingResultBean<MemberSolrBean> selectPage = memberSolrClient.selectPage(sqb);
+        cb.query().setFormalizedDatetime_Exists();
+        
+        SolrPagingResultBean<MemberSolrBean> selectPage = memberSolrClient.selectPage(cb);
         
         log("RecordCount:" + selectPage.getAllRecordCount());
         List<MemberSolrBean> selectedList = selectPage.getSelectedList();

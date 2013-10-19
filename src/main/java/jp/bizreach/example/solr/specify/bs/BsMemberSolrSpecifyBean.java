@@ -39,6 +39,10 @@ public class BsMemberSolrSpecifyBean extends AbstractSolrSpecifyBean {
 		this.addSpecifyField(MemberSolrMeta.FIELD_birthdate);
     }
 
+    public void fieldFormalizedDatetime() {
+		this.addSpecifyField(MemberSolrMeta.FIELD_formalized_datetime);
+    }
+
     public void fieldPurchaseId() {
 		this.addSpecifyField(MemberSolrMeta.FIELD_purchase_id);
     }

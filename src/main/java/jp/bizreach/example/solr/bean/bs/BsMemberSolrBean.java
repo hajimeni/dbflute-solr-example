@@ -42,6 +42,10 @@ public class BsMemberSolrBean extends AbstractSolrBean implements Serializable {
     @Field("birthdate")
     protected Date birthdate;
 
+    /** formalized_datetime (tdate) */
+    @Field("formalized_datetime")
+    protected Date formalizedDatetime;
+
     /** purchase_id (tlong) */
     @Field("purchase_id")
     protected Long[] purchaseId;
@@ -113,6 +117,14 @@ public class BsMemberSolrBean extends AbstractSolrBean implements Serializable {
         birthdate = value;
     }
 
+    public Date getFormalizedDatetime() {
+        return formalizedDatetime;
+    }
+
+    public void setFormalizedDatetime(Date value) {
+        formalizedDatetime = value;
+    }
+
     public Long[] getPurchaseId() {
         return purchaseId;
     }
@@ -167,6 +179,7 @@ public class BsMemberSolrBean extends AbstractSolrBean implements Serializable {
 		sb.append("memberName").append("=").append(this.getMemberName()).append(",");
 		sb.append("memberAccount").append("=").append(this.getMemberAccount()).append(",");
 		sb.append("birthdate").append("=").append(this.getBirthdate()).append(",");
+		sb.append("formalizedDatetime").append("=").append(this.getFormalizedDatetime()).append(",");
 		sb.append("purchaseId").append("=").append(this.getPurchaseId()).append(",");
 		sb.append("productId").append("=").append(this.getProductId()).append(",");
 		sb.append("productName").append("=").append(this.getProductName()).append(",");

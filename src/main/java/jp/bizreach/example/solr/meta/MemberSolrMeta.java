@@ -31,6 +31,9 @@ public class MemberSolrMeta extends AbstractSolrClient {
 	/** birthdate */
 	public static final String FIELD_birthdate = "birthdate";
 
+	/** formalized_datetime */
+	public static final String FIELD_formalized_datetime = "formalized_datetime";
+
 	/** purchase_id */
 	public static final String FIELD_purchase_id = "purchase_id";
 
@@ -61,6 +64,7 @@ public class MemberSolrMeta extends AbstractSolrClient {
 , FIELD_member_name
 , FIELD_member_account
 , FIELD_birthdate
+, FIELD_formalized_datetime
 , FIELD_purchase_id
 , FIELD_product_id
 , FIELD_product_name

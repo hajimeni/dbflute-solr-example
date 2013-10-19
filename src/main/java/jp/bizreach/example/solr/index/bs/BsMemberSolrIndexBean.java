@@ -45,6 +45,10 @@ public class BsMemberSolrIndexBean extends AbstractSolrIndexBean implements Seri
 	@Field("birthdate")
 	protected Date birthdate;
 
+	/** formalized_datetime (tdate) */
+	@Field("formalized_datetime")
+	protected Date formalizedDatetime;
+
 	/** purchase_id (tlong) */
 	@Field("purchase_id")
 	protected List<Long> purchaseId;
@@ -119,6 +123,14 @@ public class BsMemberSolrIndexBean extends AbstractSolrIndexBean implements Seri
 
 	public void setBirthdate(Date value) {
 		this.birthdate = value;
+    }
+
+    public Date getFormalizedDatetime() {
+		return this.formalizedDatetime;
+    }
+
+	public void setFormalizedDatetime(Date value) {
+		this.formalizedDatetime = value;
     }
 
     public List<Long> getPurchaseId() {

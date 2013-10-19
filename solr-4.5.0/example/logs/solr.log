@@ -2279,3 +2279,430 @@ INFO  - 2013-10-14 19:02:43.347; org.apache.solr.core.SolrCore; [DIH] webapp=/so
 INFO  - 2013-10-14 19:03:04.347; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/select params={fl=id,member_id,member_status_cd,member_name,member_account,birthdate,purchase_id,product_id,product_name,product_category_code,product_category_name&start=0&q=member_name:S*+AND+birthdate:[1963-10-14T10:03:04.000Z+TO+*]&wt=javabin&version=2&rows=1000} hits=4 status=0 QTime=4 
 INFO  - 2013-10-14 19:03:16.765; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/select params={fl=id,member_id,member_status_cd,member_name,member_account,birthdate,purchase_id,product_id,product_name,product_category_code,product_category_name&start=0&q=member_name:S*+AND+birthdate:[1963-10-14T10:03:16.000Z+TO+*]&wt=javabin&version=2&rows=1000} hits=4 status=0 QTime=2 
 INFO  - 2013-10-14 19:04:04.964; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/select params={fl=id,member_id,member_status_cd,member_name,member_account,birthdate,purchase_id,product_id,product_name,product_category_code,product_category_name&start=0&q=member_name:S*+AND+birthdate:[1963-10-14T10:04:04.000Z+TO+*]+AND+product_name:Glass*&wt=javabin&version=2&rows=1000} hits=2 status=0 QTime=2 
+INFO  - 2013-10-15 09:57:03.958; org.eclipse.jetty.server.Server; Graceful shutdown SocketConnector@0.0.0.0:8983
+INFO  - 2013-10-15 09:57:03.999; org.eclipse.jetty.server.Server; Graceful shutdown o.e.j.w.WebAppContext{/solr,file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/solr-webapp/webapp/},/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/webapps/solr.war
+INFO  - 2013-10-15 09:57:05.011; org.apache.solr.core.CoreContainer; Shutting down CoreContainer instance=962844101
+INFO  - 2013-10-15 09:57:05.024; org.apache.solr.core.SolrCore; [DIH]  CLOSING SolrCore org.apache.solr.core.SolrCore@3f362948
+INFO  - 2013-10-15 09:57:05.034; org.apache.solr.update.DirectUpdateHandler2; closing DirectUpdateHandler2{commits=2,autocommits=0,soft autocommits=0,optimizes=0,rollbacks=0,expungeDeletes=0,docsPending=0,adds=0,deletesById=0,deletesByQuery=0,errors=0,cumulative_adds=40,cumulative_deletesById=0,cumulative_deletesByQuery=2,cumulative_errors=0}
+INFO  - 2013-10-15 09:57:05.044; org.apache.solr.update.SolrCoreState; Closing SolrCoreState
+INFO  - 2013-10-15 09:57:05.045; org.apache.solr.update.DefaultSolrCoreState; SolrCoreState ref count has reached 0 - closing IndexWriter
+INFO  - 2013-10-15 09:57:05.046; org.apache.solr.update.DefaultSolrCoreState; closing IndexWriter with IndexWriterCloser
+INFO  - 2013-10-15 09:57:05.081; org.apache.solr.core.SolrCore; [DIH] Closing main searcher on request.
+INFO  - 2013-10-15 09:57:05.092; org.apache.solr.core.CachingDirectoryFactory; Closing NRTCachingDirectoryFactory - 2 directories currently being tracked
+INFO  - 2013-10-15 09:57:05.095; org.apache.solr.core.CachingDirectoryFactory; looking to close /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index [CachedDir<<refCount=0;path=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index;done=false>>]
+INFO  - 2013-10-15 09:57:05.095; org.apache.solr.core.CachingDirectoryFactory; Closing directory: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index
+INFO  - 2013-10-15 09:57:05.096; org.apache.solr.core.CachingDirectoryFactory; looking to close /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data [CachedDir<<refCount=0;path=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data;done=false>>]
+INFO  - 2013-10-15 09:57:05.097; org.apache.solr.core.CachingDirectoryFactory; Closing directory: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data
+INFO  - 2013-10-15 09:57:05.130; org.eclipse.jetty.server.handler.ContextHandler; stopped o.e.j.w.WebAppContext{/solr,file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/solr-webapp/webapp/},/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/webapps/solr.war
+INFO  - 2013-10-18 21:11:18.403; org.eclipse.jetty.server.Server; jetty-8.1.10.v20130312
+INFO  - 2013-10-18 21:11:18.428; org.eclipse.jetty.deploy.providers.ScanningAppProvider; Deployment monitor /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/contexts at interval 0
+INFO  - 2013-10-18 21:11:18.433; org.eclipse.jetty.deploy.DeploymentManager; Deployable added: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/contexts/solr-jetty-context.xml
+INFO  - 2013-10-18 21:11:19.399; org.eclipse.jetty.webapp.StandardDescriptorProcessor; NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+INFO  - 2013-10-18 21:11:19.434; org.apache.solr.servlet.SolrDispatchFilter; SolrDispatchFilter.init()
+INFO  - 2013-10-18 21:11:19.447; org.apache.solr.core.SolrResourceLoader; JNDI not configured for solr (NoInitialContextEx)
+INFO  - 2013-10-18 21:11:19.447; org.apache.solr.core.SolrResourceLoader; using system property solr.solr.home: example-dbflute
+INFO  - 2013-10-18 21:11:19.448; org.apache.solr.core.SolrResourceLoader; new SolrResourceLoader for directory: 'example-dbflute/'
+INFO  - 2013-10-18 21:11:19.529; org.apache.solr.core.ConfigSolr; Loading container configuration from /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr.xml
+INFO  - 2013-10-18 21:11:19.535; org.apache.solr.core.ConfigSolr; /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr.xml does not exist, using default configuration
+INFO  - 2013-10-18 21:11:19.665; org.apache.solr.core.CoreContainer; New CoreContainer 1157587166
+INFO  - 2013-10-18 21:11:19.665; org.apache.solr.core.CoreContainer; Loading cores into CoreContainer [instanceDir=example-dbflute/]
+INFO  - 2013-10-18 21:11:19.673; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting socketTimeout to: 0
+INFO  - 2013-10-18 21:11:19.673; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting urlScheme to: http://
+INFO  - 2013-10-18 21:11:19.673; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting connTimeout to: 0
+INFO  - 2013-10-18 21:11:19.674; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maxConnectionsPerHost to: 20
+INFO  - 2013-10-18 21:11:19.675; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting corePoolSize to: 0
+INFO  - 2013-10-18 21:11:19.675; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maximumPoolSize to: 2147483647
+INFO  - 2013-10-18 21:11:19.676; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maxThreadIdleTime to: 5
+INFO  - 2013-10-18 21:11:19.676; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting sizeOfQueue to: -1
+INFO  - 2013-10-18 21:11:19.676; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting fairnessPolicy to: false
+INFO  - 2013-10-18 21:11:19.683; org.apache.solr.client.solrj.impl.HttpClientUtil; Creating new http client, config:maxConnectionsPerHost=20&maxConnections=10000&socketTimeout=0&connTimeout=0&retry=false
+INFO  - 2013-10-18 21:11:19.797; org.apache.solr.logging.LogWatcher; SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+INFO  - 2013-10-18 21:11:19.798; org.apache.solr.logging.LogWatcher; Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+INFO  - 2013-10-18 21:11:20.048; org.apache.solr.core.CoreContainer; Creating SolrCore 'collection1' using instanceDir: example-dbflute/collection1
+INFO  - 2013-10-18 21:11:20.049; org.apache.solr.core.SolrResourceLoader; new SolrResourceLoader for directory: 'example-dbflute/collection1/'
+ERROR - 2013-10-18 21:11:20.058; org.apache.solr.core.CoreContainer; Failed to load file /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/collection1/solrconfig.xml
+ERROR - 2013-10-18 21:11:20.059; org.apache.solr.core.CoreContainer; Unable to create core: collection1
+org.apache.solr.common.SolrException: Could not load config file /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/collection1/solrconfig.xml
+	at org.apache.solr.core.CoreContainer.createFromLocal(CoreContainer.java:492)
+	at org.apache.solr.core.CoreContainer.create(CoreContainer.java:559)
+	at org.apache.solr.core.CoreContainer$1.call(CoreContainer.java:249)
+	at org.apache.solr.core.CoreContainer$1.call(CoreContainer.java:241)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:724)
+Caused by: java.io.IOException: Can't find resource 'solrconfig.xml' in classpath or 'example-dbflute/collection1/conf/', cwd=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example
+	at org.apache.solr.core.SolrResourceLoader.openResource(SolrResourceLoader.java:322)
+	at org.apache.solr.core.SolrResourceLoader.openConfig(SolrResourceLoader.java:287)
+	at org.apache.solr.core.Config.<init>(Config.java:116)
+	at org.apache.solr.core.Config.<init>(Config.java:86)
+	at org.apache.solr.core.SolrConfig.<init>(SolrConfig.java:129)
+	at org.apache.solr.core.CoreContainer.createFromLocal(CoreContainer.java:489)
+	... 11 more
+ERROR - 2013-10-18 21:11:20.062; org.apache.solr.common.SolrException; null:org.apache.solr.common.SolrException: Unable to create core: collection1
+	at org.apache.solr.core.CoreContainer.recordAndThrow(CoreContainer.java:936)
+	at org.apache.solr.core.CoreContainer.create(CoreContainer.java:568)
+	at org.apache.solr.core.CoreContainer$1.call(CoreContainer.java:249)
+	at org.apache.solr.core.CoreContainer$1.call(CoreContainer.java:241)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:724)
+Caused by: org.apache.solr.common.SolrException: Could not load config file /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/collection1/solrconfig.xml
+	at org.apache.solr.core.CoreContainer.createFromLocal(CoreContainer.java:492)
+	at org.apache.solr.core.CoreContainer.create(CoreContainer.java:559)
+	... 10 more
+Caused by: java.io.IOException: Can't find resource 'solrconfig.xml' in classpath or 'example-dbflute/collection1/conf/', cwd=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example
+	at org.apache.solr.core.SolrResourceLoader.openResource(SolrResourceLoader.java:322)
+	at org.apache.solr.core.SolrResourceLoader.openConfig(SolrResourceLoader.java:287)
+	at org.apache.solr.core.Config.<init>(Config.java:116)
+	at org.apache.solr.core.Config.<init>(Config.java:86)
+	at org.apache.solr.core.SolrConfig.<init>(SolrConfig.java:129)
+	at org.apache.solr.core.CoreContainer.createFromLocal(CoreContainer.java:489)
+	... 11 more
+
+INFO  - 2013-10-18 21:11:20.063; org.apache.solr.servlet.SolrDispatchFilter; user.dir=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example
+INFO  - 2013-10-18 21:11:20.064; org.apache.solr.servlet.SolrDispatchFilter; SolrDispatchFilter.init() done
+INFO  - 2013-10-18 21:11:20.088; org.eclipse.jetty.server.AbstractConnector; Started SocketConnector@0.0.0.0:8983
+INFO  - 2013-10-18 21:11:34.447; org.eclipse.jetty.server.Server; Graceful shutdown SocketConnector@0.0.0.0:8983
+INFO  - 2013-10-18 21:11:34.447; org.eclipse.jetty.server.Server; Graceful shutdown o.e.j.w.WebAppContext{/solr,file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/solr-webapp/webapp/},/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/webapps/solr.war
+INFO  - 2013-10-18 21:11:35.449; org.apache.solr.core.CoreContainer; Shutting down CoreContainer instance=1157587166
+INFO  - 2013-10-18 21:11:35.451; org.eclipse.jetty.server.handler.ContextHandler; stopped o.e.j.w.WebAppContext{/solr,file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/solr-webapp/webapp/},/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/webapps/solr.war
+INFO  - 2013-10-18 21:11:50.764; org.eclipse.jetty.server.Server; jetty-8.1.10.v20130312
+INFO  - 2013-10-18 21:11:50.783; org.eclipse.jetty.deploy.providers.ScanningAppProvider; Deployment monitor /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/contexts at interval 0
+INFO  - 2013-10-18 21:11:50.788; org.eclipse.jetty.deploy.DeploymentManager; Deployable added: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/contexts/solr-jetty-context.xml
+INFO  - 2013-10-18 21:11:51.655; org.eclipse.jetty.webapp.StandardDescriptorProcessor; NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+INFO  - 2013-10-18 21:11:51.686; org.apache.solr.servlet.SolrDispatchFilter; SolrDispatchFilter.init()
+INFO  - 2013-10-18 21:11:51.698; org.apache.solr.core.SolrResourceLoader; JNDI not configured for solr (NoInitialContextEx)
+INFO  - 2013-10-18 21:11:51.699; org.apache.solr.core.SolrResourceLoader; using system property solr.solr.home: ./example-DIH/solr/
+INFO  - 2013-10-18 21:11:51.699; org.apache.solr.core.SolrResourceLoader; new SolrResourceLoader for directory: './example-DIH/solr/'
+INFO  - 2013-10-18 21:11:51.780; org.apache.solr.core.ConfigSolr; Loading container configuration from /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/./example-DIH/solr/solr.xml
+INFO  - 2013-10-18 21:11:51.786; org.apache.solr.core.ConfigSolr; /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/./example-DIH/solr/solr.xml does not exist, using default configuration
+INFO  - 2013-10-18 21:11:51.882; org.apache.solr.core.CoreContainer; New CoreContainer 2085636231
+INFO  - 2013-10-18 21:11:51.882; org.apache.solr.core.CoreContainer; Loading cores into CoreContainer [instanceDir=./example-DIH/solr/]
+INFO  - 2013-10-18 21:11:51.890; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting socketTimeout to: 0
+INFO  - 2013-10-18 21:11:51.891; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting urlScheme to: http://
+INFO  - 2013-10-18 21:11:51.891; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting connTimeout to: 0
+INFO  - 2013-10-18 21:11:51.891; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maxConnectionsPerHost to: 20
+INFO  - 2013-10-18 21:11:51.893; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting corePoolSize to: 0
+INFO  - 2013-10-18 21:11:51.893; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maximumPoolSize to: 2147483647
+INFO  - 2013-10-18 21:11:51.893; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maxThreadIdleTime to: 5
+INFO  - 2013-10-18 21:11:51.893; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting sizeOfQueue to: -1
+INFO  - 2013-10-18 21:11:51.894; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting fairnessPolicy to: false
+INFO  - 2013-10-18 21:11:51.898; org.apache.solr.client.solrj.impl.HttpClientUtil; Creating new http client, config:maxConnectionsPerHost=20&maxConnections=10000&socketTimeout=0&connTimeout=0&retry=false
+INFO  - 2013-10-18 21:11:51.993; org.apache.solr.logging.LogWatcher; SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+INFO  - 2013-10-18 21:11:51.994; org.apache.solr.logging.LogWatcher; Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+INFO  - 2013-10-18 21:11:52.029; org.apache.solr.core.CoreContainer; Creating SolrCore 'collection1' using instanceDir: ./example-DIH/solr/collection1
+INFO  - 2013-10-18 21:11:52.030; org.apache.solr.core.SolrResourceLoader; new SolrResourceLoader for directory: './example-DIH/solr/collection1/'
+ERROR - 2013-10-18 21:11:52.037; org.apache.solr.core.CoreContainer; Failed to load file /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/./example-DIH/solr/collection1/solrconfig.xml
+ERROR - 2013-10-18 21:11:52.038; org.apache.solr.core.CoreContainer; Unable to create core: collection1
+org.apache.solr.common.SolrException: Could not load config file /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/./example-DIH/solr/collection1/solrconfig.xml
+	at org.apache.solr.core.CoreContainer.createFromLocal(CoreContainer.java:492)
+	at org.apache.solr.core.CoreContainer.create(CoreContainer.java:559)
+	at org.apache.solr.core.CoreContainer$1.call(CoreContainer.java:249)
+	at org.apache.solr.core.CoreContainer$1.call(CoreContainer.java:241)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:724)
+Caused by: java.io.IOException: Can't find resource 'solrconfig.xml' in classpath or './example-DIH/solr/collection1/conf/', cwd=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example
+	at org.apache.solr.core.SolrResourceLoader.openResource(SolrResourceLoader.java:322)
+	at org.apache.solr.core.SolrResourceLoader.openConfig(SolrResourceLoader.java:287)
+	at org.apache.solr.core.Config.<init>(Config.java:116)
+	at org.apache.solr.core.Config.<init>(Config.java:86)
+	at org.apache.solr.core.SolrConfig.<init>(SolrConfig.java:129)
+	at org.apache.solr.core.CoreContainer.createFromLocal(CoreContainer.java:489)
+	... 11 more
+ERROR - 2013-10-18 21:11:52.040; org.apache.solr.common.SolrException; null:org.apache.solr.common.SolrException: Unable to create core: collection1
+	at org.apache.solr.core.CoreContainer.recordAndThrow(CoreContainer.java:936)
+	at org.apache.solr.core.CoreContainer.create(CoreContainer.java:568)
+	at org.apache.solr.core.CoreContainer$1.call(CoreContainer.java:249)
+	at org.apache.solr.core.CoreContainer$1.call(CoreContainer.java:241)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:724)
+Caused by: org.apache.solr.common.SolrException: Could not load config file /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/./example-DIH/solr/collection1/solrconfig.xml
+	at org.apache.solr.core.CoreContainer.createFromLocal(CoreContainer.java:492)
+	at org.apache.solr.core.CoreContainer.create(CoreContainer.java:559)
+	... 10 more
+Caused by: java.io.IOException: Can't find resource 'solrconfig.xml' in classpath or './example-DIH/solr/collection1/conf/', cwd=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example
+	at org.apache.solr.core.SolrResourceLoader.openResource(SolrResourceLoader.java:322)
+	at org.apache.solr.core.SolrResourceLoader.openConfig(SolrResourceLoader.java:287)
+	at org.apache.solr.core.Config.<init>(Config.java:116)
+	at org.apache.solr.core.Config.<init>(Config.java:86)
+	at org.apache.solr.core.SolrConfig.<init>(SolrConfig.java:129)
+	at org.apache.solr.core.CoreContainer.createFromLocal(CoreContainer.java:489)
+	... 11 more
+
+INFO  - 2013-10-18 21:11:52.041; org.apache.solr.servlet.SolrDispatchFilter; user.dir=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example
+INFO  - 2013-10-18 21:11:52.041; org.apache.solr.servlet.SolrDispatchFilter; SolrDispatchFilter.init() done
+INFO  - 2013-10-18 21:11:52.064; org.eclipse.jetty.server.AbstractConnector; Started SocketConnector@0.0.0.0:8983
+INFO  - 2013-10-18 21:11:54.123; org.eclipse.jetty.server.Server; Graceful shutdown SocketConnector@0.0.0.0:8983
+INFO  - 2013-10-18 21:11:54.123; org.eclipse.jetty.server.Server; Graceful shutdown o.e.j.w.WebAppContext{/solr,file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/solr-webapp/webapp/},/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/webapps/solr.war
+INFO  - 2013-10-18 21:11:55.125; org.apache.solr.core.CoreContainer; Shutting down CoreContainer instance=2085636231
+INFO  - 2013-10-18 21:11:55.127; org.eclipse.jetty.server.handler.ContextHandler; stopped o.e.j.w.WebAppContext{/solr,file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/solr-webapp/webapp/},/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/webapps/solr.war
+INFO  - 2013-10-18 21:12:04.966; org.eclipse.jetty.server.Server; jetty-8.1.10.v20130312
+INFO  - 2013-10-18 21:12:04.985; org.eclipse.jetty.deploy.providers.ScanningAppProvider; Deployment monitor /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/contexts at interval 0
+INFO  - 2013-10-18 21:12:04.991; org.eclipse.jetty.deploy.DeploymentManager; Deployable added: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/contexts/solr-jetty-context.xml
+INFO  - 2013-10-18 21:12:05.865; org.eclipse.jetty.webapp.StandardDescriptorProcessor; NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+INFO  - 2013-10-18 21:12:05.896; org.apache.solr.servlet.SolrDispatchFilter; SolrDispatchFilter.init()
+INFO  - 2013-10-18 21:12:05.907; org.apache.solr.core.SolrResourceLoader; JNDI not configured for solr (NoInitialContextEx)
+INFO  - 2013-10-18 21:12:05.907; org.apache.solr.core.SolrResourceLoader; using system property solr.solr.home: ./example-dbflute/solr/
+INFO  - 2013-10-18 21:12:05.907; org.apache.solr.core.SolrResourceLoader; new SolrResourceLoader for directory: './example-dbflute/solr/'
+INFO  - 2013-10-18 21:12:05.989; org.apache.solr.core.ConfigSolr; Loading container configuration from /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/./example-dbflute/solr/solr.xml
+INFO  - 2013-10-18 21:12:06.086; org.apache.solr.core.CoreContainer; New CoreContainer 342936204
+INFO  - 2013-10-18 21:12:06.086; org.apache.solr.core.CoreContainer; Loading cores into CoreContainer [instanceDir=./example-dbflute/solr/]
+INFO  - 2013-10-18 21:12:06.086; org.apache.solr.core.CoreContainer; loading shared library: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/./example-dbflute/solr/lib
+WARN  - 2013-10-18 21:12:06.087; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: lib (resolved as: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/./example-dbflute/solr/lib).
+INFO  - 2013-10-18 21:12:06.098; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting socketTimeout to: 0
+INFO  - 2013-10-18 21:12:06.099; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting urlScheme to: http://
+INFO  - 2013-10-18 21:12:06.099; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting connTimeout to: 0
+INFO  - 2013-10-18 21:12:06.100; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maxConnectionsPerHost to: 20
+INFO  - 2013-10-18 21:12:06.101; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting corePoolSize to: 0
+INFO  - 2013-10-18 21:12:06.101; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maximumPoolSize to: 2147483647
+INFO  - 2013-10-18 21:12:06.101; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maxThreadIdleTime to: 5
+INFO  - 2013-10-18 21:12:06.101; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting sizeOfQueue to: -1
+INFO  - 2013-10-18 21:12:06.101; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting fairnessPolicy to: false
+INFO  - 2013-10-18 21:12:06.106; org.apache.solr.client.solrj.impl.HttpClientUtil; Creating new http client, config:maxConnectionsPerHost=20&maxConnections=10000&socketTimeout=0&connTimeout=0&retry=false
+INFO  - 2013-10-18 21:12:06.202; org.apache.solr.logging.LogWatcher; SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+INFO  - 2013-10-18 21:12:06.203; org.apache.solr.logging.LogWatcher; Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+INFO  - 2013-10-18 21:12:06.241; org.apache.solr.core.CoreContainer; Creating SolrCore 'DIH' using instanceDir: ./example-dbflute/solr/DIH
+INFO  - 2013-10-18 21:12:06.242; org.apache.solr.core.SolrResourceLoader; new SolrResourceLoader for directory: './example-dbflute/solr/DIH/'
+INFO  - 2013-10-18 21:12:06.242; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/lib/mysql-connector-java-5.1.26-bin.jar' to classloader
+INFO  - 2013-10-18 21:12:06.279; org.apache.solr.core.SolrConfig; Adding specified lib dirs to ClassLoader
+INFO  - 2013-10-18 21:12:06.280; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/dist/solr-dataimporthandler-4.5.0.jar' to classloader
+INFO  - 2013-10-18 21:12:06.280; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/dist/solr-dataimporthandler-extras-4.5.0.jar' to classloader
+INFO  - 2013-10-18 21:12:06.366; org.apache.solr.core.SolrConfig; Using Lucene MatchVersion: LUCENE_45
+INFO  - 2013-10-18 21:12:06.445; org.apache.solr.core.SolrConfig; Loaded SolrConfig: solrconfig.xml
+INFO  - 2013-10-18 21:12:06.451; org.apache.solr.schema.IndexSchema; Reading Solr Schema from schema.xml
+INFO  - 2013-10-18 21:12:06.472; org.apache.solr.schema.IndexSchema; [DIH] Schema name=db
+INFO  - 2013-10-18 21:12:06.605; org.apache.solr.schema.IndexSchema; default search field in schema is purchase_name
+INFO  - 2013-10-18 21:12:06.607; org.apache.solr.schema.IndexSchema; query parser default operator is OR
+INFO  - 2013-10-18 21:12:06.607; org.apache.solr.schema.IndexSchema; unique key field: id
+INFO  - 2013-10-18 21:12:06.684; org.apache.solr.core.SolrCore; solr.NRTCachingDirectoryFactory
+INFO  - 2013-10-18 21:12:06.688; org.apache.solr.core.SolrCore; [DIH] Opening new SolrCore at ./example-dbflute/solr/DIH/, dataDir=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/
+INFO  - 2013-10-18 21:12:06.690; org.apache.solr.core.JmxMonitoredMap; No JMX servers found, not exposing Solr information with JMX.
+INFO  - 2013-10-18 21:12:06.693; org.apache.solr.core.SolrCore; [DIH] Added SolrEventListener for newSearcher: org.apache.solr.core.QuerySenderListener{queries=[{q=solr,start=0,rows=10}, {q=rocks,start=0,rows=10}, {q=static newSearcher warming query from solrconfig.xml}]}
+INFO  - 2013-10-18 21:12:06.693; org.apache.solr.core.SolrCore; [DIH] Added SolrEventListener for firstSearcher: org.apache.solr.core.QuerySenderListener{queries=[]}
+INFO  - 2013-10-18 21:12:06.702; org.apache.solr.core.CachingDirectoryFactory; return new directory for /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data
+INFO  - 2013-10-18 21:12:06.702; org.apache.solr.core.SolrCore; New index directory detected: old=null new=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index/
+INFO  - 2013-10-18 21:12:06.702; org.apache.solr.core.CachingDirectoryFactory; return new directory for /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index
+INFO  - 2013-10-18 21:12:06.710; org.apache.solr.core.SolrCore; created xslt: solr.XSLTResponseWriter
+INFO  - 2013-10-18 21:12:06.711; org.apache.solr.response.XSLTResponseWriter; xsltCacheLifetimeSeconds=5
+INFO  - 2013-10-18 21:12:06.757; org.apache.solr.core.SolrCore; no updateRequestProcessorChain defined as default, creating implicit default
+INFO  - 2013-10-18 21:12:06.762; org.apache.solr.core.RequestHandlers; created standard: solr.StandardRequestHandler
+INFO  - 2013-10-18 21:12:06.762; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SpellCheckerRequestHandler
+INFO  - 2013-10-18 21:12:06.763; org.apache.solr.core.RequestHandlers; created spellchecker: solr.SpellCheckerRequestHandler
+INFO  - 2013-10-18 21:12:06.764; org.apache.solr.core.RequestHandlers; created /mlt: solr.MoreLikeThisHandler
+INFO  - 2013-10-18 21:12:06.772; org.apache.solr.core.RequestHandlers; created /dataimport: org.apache.solr.handler.dataimport.DataImportHandler
+INFO  - 2013-10-18 21:12:06.772; org.apache.solr.core.RequestHandlers; created /search: org.apache.solr.handler.component.SearchHandler
+INFO  - 2013-10-18 21:12:06.772; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: org.apache.solr.handler.component.SearchHandler
+INFO  - 2013-10-18 21:12:06.772; org.apache.solr.core.RequestHandlers; created /elevate: org.apache.solr.handler.component.SearchHandler
+INFO  - 2013-10-18 21:12:06.774; org.apache.solr.core.RequestHandlers; created /update: solr.UpdateRequestHandler
+INFO  - 2013-10-18 21:12:06.775; org.apache.solr.core.RequestHandlers; created /admin/: org.apache.solr.handler.admin.AdminHandlers
+INFO  - 2013-10-18 21:12:06.777; org.apache.solr.core.RequestHandlers; created /admin/ping: solr.PingRequestHandler
+INFO  - 2013-10-18 21:12:06.778; org.apache.solr.core.RequestHandlers; created /debug/dump: solr.DumpRequestHandler
+INFO  - 2013-10-18 21:12:06.801; org.apache.solr.handler.loader.XMLLoader; xsltCacheLifetimeSeconds=60
+INFO  - 2013-10-18 21:12:06.810; org.apache.solr.update.CommitTracker; Hard AutoCommit: disabled
+INFO  - 2013-10-18 21:12:06.810; org.apache.solr.update.CommitTracker; Soft AutoCommit: disabled
+INFO  - 2013-10-18 21:12:06.843; org.apache.solr.core.SolrDeletionPolicy; SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@6360bdd7; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_7,generation=7}
+INFO  - 2013-10-18 21:12:06.844; org.apache.solr.core.SolrDeletionPolicy; newest commit generation = 7
+INFO  - 2013-10-18 21:12:06.867; org.apache.solr.search.SolrIndexSearcher; Opening Searcher@9a99335 main
+INFO  - 2013-10-18 21:12:06.871; org.apache.solr.handler.component.QueryElevationComponent; Loading QueryElevation from: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/./example-dbflute/solr/DIH/conf/elevate.xml
+INFO  - 2013-10-18 21:12:06.891; org.apache.solr.core.CoreContainer; registering core: DIH
+INFO  - 2013-10-18 21:12:06.891; org.apache.solr.core.QuerySenderListener; QuerySenderListener sending requests to Searcher@9a99335 main{StandardDirectoryReader(segments_7:19:nrt _5(4.5):C20)}
+INFO  - 2013-10-18 21:12:06.892; org.apache.solr.core.QuerySenderListener; QuerySenderListener done.
+INFO  - 2013-10-18 21:12:06.892; org.apache.solr.core.SolrCore; [DIH] Registered new searcher Searcher@9a99335 main{StandardDirectoryReader(segments_7:19:nrt _5(4.5):C20)}
+INFO  - 2013-10-18 21:12:06.892; org.apache.solr.servlet.SolrDispatchFilter; user.dir=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example
+INFO  - 2013-10-18 21:12:06.893; org.apache.solr.servlet.SolrDispatchFilter; SolrDispatchFilter.init() done
+INFO  - 2013-10-18 21:12:06.918; org.eclipse.jetty.server.AbstractConnector; Started SocketConnector@0.0.0.0:8983
+INFO  - 2013-10-18 21:13:07.880; org.apache.solr.servlet.SolrDispatchFilter; [admin] webapp=null path=/admin/cores params={indexInfo=false&_=1382098387868&wt=json} status=0 QTime=3 
+INFO  - 2013-10-18 21:13:07.930; org.apache.solr.servlet.SolrDispatchFilter; [admin] webapp=null path=/admin/info/system params={_=1382098387903&wt=json} status=0 QTime=24 
+ERROR - 2013-10-18 21:13:19.870; org.apache.solr.common.SolrException; org.apache.solr.common.SolrException: undefined field a
+	at org.apache.solr.schema.IndexSchema.getDynamicFieldType(IndexSchema.java:1235)
+	at org.apache.solr.schema.IndexSchema$SolrQueryAnalyzer.getWrappedAnalyzer(IndexSchema.java:419)
+	at org.apache.lucene.analysis.AnalyzerWrapper.initReader(AnalyzerWrapper.java:117)
+	at org.apache.lucene.analysis.Analyzer.tokenStream(Analyzer.java:178)
+	at org.apache.solr.parser.SolrQueryParserBase.newFieldQuery(SolrQueryParserBase.java:408)
+	at org.apache.solr.parser.SolrQueryParserBase.getFieldQuery(SolrQueryParserBase.java:966)
+	at org.apache.solr.parser.SolrQueryParserBase.handleBareTokenQuery(SolrQueryParserBase.java:765)
+	at org.apache.solr.parser.QueryParser.Term(QueryParser.java:300)
+	at org.apache.solr.parser.QueryParser.Clause(QueryParser.java:186)
+	at org.apache.solr.parser.QueryParser.Query(QueryParser.java:108)
+	at org.apache.solr.parser.QueryParser.TopLevelQuery(QueryParser.java:97)
+	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:160)
+	at org.apache.solr.search.LuceneQParser.parse(LuceneQParser.java:50)
+	at org.apache.solr.search.QParser.getQuery(QParser.java:142)
+	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:142)
+	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:187)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:135)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:1859)
+	at org.apache.solr.servlet.SolrDispatchFilter.execute(SolrDispatchFilter.java:703)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:406)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:195)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1419)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:455)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:137)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:557)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:231)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1075)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:384)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:193)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1009)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:135)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:255)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:154)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+	at org.eclipse.jetty.server.Server.handle(Server.java:368)
+	at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:489)
+	at org.eclipse.jetty.server.BlockingHttpConnection.handleRequest(BlockingHttpConnection.java:53)
+	at org.eclipse.jetty.server.AbstractHttpConnection.headerComplete(AbstractHttpConnection.java:942)
+	at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.headerComplete(AbstractHttpConnection.java:1004)
+	at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:640)
+	at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:235)
+	at org.eclipse.jetty.server.BlockingHttpConnection.handle(BlockingHttpConnection.java:72)
+	at org.eclipse.jetty.server.bio.SocketConnector$ConnectorEndPoint.run(SocketConnector.java:264)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+	at java.lang.Thread.run(Thread.java:724)
+
+INFO  - 2013-10-18 21:13:19.871; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/select params={indent=true&q=a:b&_=1382098399841&wt=json} status=400 QTime=19 
+INFO  - 2013-10-19 13:09:19.232; org.apache.solr.servlet.SolrDispatchFilter; [admin] webapp=null path=/admin/cores params={indexInfo=false&_=1382155759180&wt=json} status=0 QTime=39 
+INFO  - 2013-10-19 13:09:19.314; org.apache.solr.servlet.SolrDispatchFilter; [admin] webapp=null path=/admin/info/system params={_=1382155759271&wt=json} status=0 QTime=37 
+INFO  - 2013-10-19 13:09:33.040; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/admin/file/ params={file=admin-extra.menu-bottom.html&_=1382155773015&contentType=text/html;charset%3Dutf-8} status=0 QTime=9 
+INFO  - 2013-10-19 13:09:33.040; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/admin/file/ params={file=admin-extra.menu-top.html&_=1382155773015&contentType=text/html;charset%3Dutf-8} status=0 QTime=9 
+INFO  - 2013-10-19 13:09:33.050; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/admin/file/ params={file=admin-extra.html&_=1382155773039} status=0 QTime=1 
+INFO  - 2013-10-19 13:09:33.080; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/admin/system params={_=1382155773038&wt=json} status=0 QTime=30 
+INFO  - 2013-10-19 13:09:33.092; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/admin/ping params={action=status&_=1382155773040&wt=json} status=503 QTime=40 
+INFO  - 2013-10-19 13:09:33.104; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/admin/luke params={numTerms=0&_=1382155773035&show=index&wt=json} status=0 QTime=54 
+INFO  - 2013-10-19 13:10:09.368; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/admin/file params={file=schema.xml&_=1382155809364&contentType=text/xml;charset%3Dutf-8} status=0 QTime=0 
+INFO  - 2013-10-19 13:13:06.806; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/select params={sort=birthdate+asc&fl=id,member_id,member_status_cd,member_name,member_account,birthdate,purchase_id,product_id,product_name,product_category_code,product_category_name&start=0&q=member_name:S*+AND+birthdate:[1963-10-19T04:13:06.000Z+TO+*]+AND+product_name:Glass*&wt=javabin&version=2&rows=1000} hits=2 status=0 QTime=189 
+INFO  - 2013-10-19 13:13:45.751; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/select params={sort=birthdate+asc&fl=id,member_id,member_status_cd,member_name,member_account,birthdate,purchase_id,product_id,product_name,product_category_code,product_category_name&start=0&q=member_name:S*+AND+birthdate:[1963-10-19T04:13:45.000Z+TO+*]+AND+product_name:Glass*&wt=javabin&version=2&rows=1000} hits=2 status=0 QTime=5 
+INFO  - 2013-10-19 13:19:04.807; org.eclipse.jetty.server.Server; Graceful shutdown SocketConnector@0.0.0.0:8983
+INFO  - 2013-10-19 13:19:04.818; org.eclipse.jetty.server.Server; Graceful shutdown o.e.j.w.WebAppContext{/solr,file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/solr-webapp/webapp/},/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/webapps/solr.war
+INFO  - 2013-10-19 13:19:05.825; org.apache.solr.core.CoreContainer; Shutting down CoreContainer instance=342936204
+INFO  - 2013-10-19 13:19:05.833; org.apache.solr.core.SolrCore; [DIH]  CLOSING SolrCore org.apache.solr.core.SolrCore@124e48e
+INFO  - 2013-10-19 13:19:05.836; org.apache.solr.update.DirectUpdateHandler2; closing DirectUpdateHandler2{commits=0,autocommits=0,soft autocommits=0,optimizes=0,rollbacks=0,expungeDeletes=0,docsPending=0,adds=0,deletesById=0,deletesByQuery=0,errors=0,cumulative_adds=0,cumulative_deletesById=0,cumulative_deletesByQuery=0,cumulative_errors=0}
+INFO  - 2013-10-19 13:19:05.836; org.apache.solr.update.SolrCoreState; Closing SolrCoreState
+INFO  - 2013-10-19 13:19:05.837; org.apache.solr.update.DefaultSolrCoreState; SolrCoreState ref count has reached 0 - closing IndexWriter
+INFO  - 2013-10-19 13:19:05.837; org.apache.solr.update.DefaultSolrCoreState; closing IndexWriter with IndexWriterCloser
+INFO  - 2013-10-19 13:19:05.855; org.apache.solr.core.SolrCore; [DIH] Closing main searcher on request.
+INFO  - 2013-10-19 13:19:05.863; org.apache.solr.core.CachingDirectoryFactory; Closing NRTCachingDirectoryFactory - 2 directories currently being tracked
+INFO  - 2013-10-19 13:19:05.864; org.apache.solr.core.CachingDirectoryFactory; looking to close /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data [CachedDir<<refCount=0;path=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data;done=false>>]
+INFO  - 2013-10-19 13:19:05.864; org.apache.solr.core.CachingDirectoryFactory; Closing directory: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data
+INFO  - 2013-10-19 13:19:05.864; org.apache.solr.core.CachingDirectoryFactory; looking to close /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index [CachedDir<<refCount=0;path=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index;done=false>>]
+INFO  - 2013-10-19 13:19:05.864; org.apache.solr.core.CachingDirectoryFactory; Closing directory: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index
+INFO  - 2013-10-19 13:19:05.874; org.eclipse.jetty.server.handler.ContextHandler; stopped o.e.j.w.WebAppContext{/solr,file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/solr-webapp/webapp/},/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/webapps/solr.war
+INFO  - 2013-10-19 13:19:08.426; org.eclipse.jetty.server.Server; jetty-8.1.10.v20130312
+INFO  - 2013-10-19 13:19:08.451; org.eclipse.jetty.deploy.providers.ScanningAppProvider; Deployment monitor /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/contexts at interval 0
+INFO  - 2013-10-19 13:19:08.459; org.eclipse.jetty.deploy.DeploymentManager; Deployable added: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/contexts/solr-jetty-context.xml
+INFO  - 2013-10-19 13:19:09.423; org.eclipse.jetty.webapp.StandardDescriptorProcessor; NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+INFO  - 2013-10-19 13:19:09.459; org.apache.solr.servlet.SolrDispatchFilter; SolrDispatchFilter.init()
+INFO  - 2013-10-19 13:19:09.476; org.apache.solr.core.SolrResourceLoader; JNDI not configured for solr (NoInitialContextEx)
+INFO  - 2013-10-19 13:19:09.477; org.apache.solr.core.SolrResourceLoader; using system property solr.solr.home: ./example-dbflute/solr/
+INFO  - 2013-10-19 13:19:09.477; org.apache.solr.core.SolrResourceLoader; new SolrResourceLoader for directory: './example-dbflute/solr/'
+INFO  - 2013-10-19 13:19:09.567; org.apache.solr.core.ConfigSolr; Loading container configuration from /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/./example-dbflute/solr/solr.xml
+INFO  - 2013-10-19 13:19:09.722; org.apache.solr.core.CoreContainer; New CoreContainer 408631784
+INFO  - 2013-10-19 13:19:09.722; org.apache.solr.core.CoreContainer; Loading cores into CoreContainer [instanceDir=./example-dbflute/solr/]
+INFO  - 2013-10-19 13:19:09.722; org.apache.solr.core.CoreContainer; loading shared library: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/./example-dbflute/solr/lib
+WARN  - 2013-10-19 13:19:09.722; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: lib (resolved as: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/./example-dbflute/solr/lib).
+INFO  - 2013-10-19 13:19:09.736; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting socketTimeout to: 0
+INFO  - 2013-10-19 13:19:09.737; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting urlScheme to: http://
+INFO  - 2013-10-19 13:19:09.737; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting connTimeout to: 0
+INFO  - 2013-10-19 13:19:09.739; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maxConnectionsPerHost to: 20
+INFO  - 2013-10-19 13:19:09.739; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting corePoolSize to: 0
+INFO  - 2013-10-19 13:19:09.739; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maximumPoolSize to: 2147483647
+INFO  - 2013-10-19 13:19:09.739; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maxThreadIdleTime to: 5
+INFO  - 2013-10-19 13:19:09.739; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting sizeOfQueue to: -1
+INFO  - 2013-10-19 13:19:09.740; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting fairnessPolicy to: false
+INFO  - 2013-10-19 13:19:09.745; org.apache.solr.client.solrj.impl.HttpClientUtil; Creating new http client, config:maxConnectionsPerHost=20&maxConnections=10000&socketTimeout=0&connTimeout=0&retry=false
+INFO  - 2013-10-19 13:19:09.888; org.apache.solr.logging.LogWatcher; SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+INFO  - 2013-10-19 13:19:09.889; org.apache.solr.logging.LogWatcher; Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+INFO  - 2013-10-19 13:19:10.168; org.apache.solr.core.CoreContainer; Creating SolrCore 'DIH' using instanceDir: ./example-dbflute/solr/DIH
+INFO  - 2013-10-19 13:19:10.169; org.apache.solr.core.SolrResourceLoader; new SolrResourceLoader for directory: './example-dbflute/solr/DIH/'
+INFO  - 2013-10-19 13:19:10.169; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/lib/mysql-connector-java-5.1.26-bin.jar' to classloader
+INFO  - 2013-10-19 13:19:10.206; org.apache.solr.core.SolrConfig; Adding specified lib dirs to ClassLoader
+INFO  - 2013-10-19 13:19:10.208; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/dist/solr-dataimporthandler-4.5.0.jar' to classloader
+INFO  - 2013-10-19 13:19:10.208; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/dist/solr-dataimporthandler-extras-4.5.0.jar' to classloader
+INFO  - 2013-10-19 13:19:10.294; org.apache.solr.core.SolrConfig; Using Lucene MatchVersion: LUCENE_45
+INFO  - 2013-10-19 13:19:10.375; org.apache.solr.core.SolrConfig; Loaded SolrConfig: solrconfig.xml
+INFO  - 2013-10-19 13:19:10.382; org.apache.solr.schema.IndexSchema; Reading Solr Schema from schema.xml
+INFO  - 2013-10-19 13:19:10.403; org.apache.solr.schema.IndexSchema; [DIH] Schema name=db
+INFO  - 2013-10-19 13:19:10.541; org.apache.solr.schema.IndexSchema; default search field in schema is purchase_name
+INFO  - 2013-10-19 13:19:10.542; org.apache.solr.schema.IndexSchema; query parser default operator is OR
+INFO  - 2013-10-19 13:19:10.543; org.apache.solr.schema.IndexSchema; unique key field: id
+INFO  - 2013-10-19 13:19:10.616; org.apache.solr.core.SolrCore; solr.NRTCachingDirectoryFactory
+INFO  - 2013-10-19 13:19:10.621; org.apache.solr.core.SolrCore; [DIH] Opening new SolrCore at ./example-dbflute/solr/DIH/, dataDir=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/
+INFO  - 2013-10-19 13:19:10.622; org.apache.solr.core.JmxMonitoredMap; No JMX servers found, not exposing Solr information with JMX.
+INFO  - 2013-10-19 13:19:10.627; org.apache.solr.core.SolrCore; [DIH] Added SolrEventListener for newSearcher: org.apache.solr.core.QuerySenderListener{queries=[{q=solr,start=0,rows=10}, {q=rocks,start=0,rows=10}, {q=static newSearcher warming query from solrconfig.xml}]}
+INFO  - 2013-10-19 13:19:10.627; org.apache.solr.core.SolrCore; [DIH] Added SolrEventListener for firstSearcher: org.apache.solr.core.QuerySenderListener{queries=[]}
+INFO  - 2013-10-19 13:19:10.635; org.apache.solr.core.CachingDirectoryFactory; return new directory for /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data
+INFO  - 2013-10-19 13:19:10.635; org.apache.solr.core.SolrCore; New index directory detected: old=null new=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index/
+INFO  - 2013-10-19 13:19:10.636; org.apache.solr.core.CachingDirectoryFactory; return new directory for /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index
+INFO  - 2013-10-19 13:19:10.644; org.apache.solr.core.SolrCore; created xslt: solr.XSLTResponseWriter
+INFO  - 2013-10-19 13:19:10.644; org.apache.solr.response.XSLTResponseWriter; xsltCacheLifetimeSeconds=5
+INFO  - 2013-10-19 13:19:10.688; org.apache.solr.core.SolrCore; no updateRequestProcessorChain defined as default, creating implicit default
+INFO  - 2013-10-19 13:19:10.693; org.apache.solr.core.RequestHandlers; created standard: solr.StandardRequestHandler
+INFO  - 2013-10-19 13:19:10.693; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SpellCheckerRequestHandler
+INFO  - 2013-10-19 13:19:10.693; org.apache.solr.core.RequestHandlers; created spellchecker: solr.SpellCheckerRequestHandler
+INFO  - 2013-10-19 13:19:10.695; org.apache.solr.core.RequestHandlers; created /mlt: solr.MoreLikeThisHandler
+INFO  - 2013-10-19 13:19:10.703; org.apache.solr.core.RequestHandlers; created /dataimport: org.apache.solr.handler.dataimport.DataImportHandler
+INFO  - 2013-10-19 13:19:10.703; org.apache.solr.core.RequestHandlers; created /search: org.apache.solr.handler.component.SearchHandler
+INFO  - 2013-10-19 13:19:10.703; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: org.apache.solr.handler.component.SearchHandler
+INFO  - 2013-10-19 13:19:10.704; org.apache.solr.core.RequestHandlers; created /elevate: org.apache.solr.handler.component.SearchHandler
+INFO  - 2013-10-19 13:19:10.706; org.apache.solr.core.RequestHandlers; created /update: solr.UpdateRequestHandler
+INFO  - 2013-10-19 13:19:10.706; org.apache.solr.core.RequestHandlers; created /admin/: org.apache.solr.handler.admin.AdminHandlers
+INFO  - 2013-10-19 13:19:10.708; org.apache.solr.core.RequestHandlers; created /admin/ping: solr.PingRequestHandler
+INFO  - 2013-10-19 13:19:10.709; org.apache.solr.core.RequestHandlers; created /debug/dump: solr.DumpRequestHandler
+INFO  - 2013-10-19 13:19:10.723; org.apache.solr.handler.loader.XMLLoader; xsltCacheLifetimeSeconds=60
+INFO  - 2013-10-19 13:19:10.734; org.apache.solr.update.CommitTracker; Hard AutoCommit: disabled
+INFO  - 2013-10-19 13:19:10.734; org.apache.solr.update.CommitTracker; Soft AutoCommit: disabled
+INFO  - 2013-10-19 13:19:10.776; org.apache.solr.core.SolrDeletionPolicy; SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@e532ef0; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_7,generation=7}
+INFO  - 2013-10-19 13:19:10.776; org.apache.solr.core.SolrDeletionPolicy; newest commit generation = 7
+INFO  - 2013-10-19 13:19:10.800; org.apache.solr.search.SolrIndexSearcher; Opening Searcher@1a3b7d72 main
+INFO  - 2013-10-19 13:19:10.804; org.apache.solr.handler.component.QueryElevationComponent; Loading QueryElevation from: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/./example-dbflute/solr/DIH/conf/elevate.xml
+INFO  - 2013-10-19 13:19:10.826; org.apache.solr.core.CoreContainer; registering core: DIH
+INFO  - 2013-10-19 13:19:10.826; org.apache.solr.core.QuerySenderListener; QuerySenderListener sending requests to Searcher@1a3b7d72 main{StandardDirectoryReader(segments_7:19:nrt _5(4.5):C20)}
+INFO  - 2013-10-19 13:19:10.827; org.apache.solr.core.QuerySenderListener; QuerySenderListener done.
+INFO  - 2013-10-19 13:19:10.827; org.apache.solr.core.SolrCore; [DIH] Registered new searcher Searcher@1a3b7d72 main{StandardDirectoryReader(segments_7:19:nrt _5(4.5):C20)}
+INFO  - 2013-10-19 13:19:10.827; org.apache.solr.servlet.SolrDispatchFilter; user.dir=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example
+INFO  - 2013-10-19 13:19:10.828; org.apache.solr.servlet.SolrDispatchFilter; SolrDispatchFilter.init() done
+INFO  - 2013-10-19 13:19:10.857; org.eclipse.jetty.server.AbstractConnector; Started SocketConnector@0.0.0.0:8983
+INFO  - 2013-10-19 13:19:25.153; org.apache.solr.servlet.SolrDispatchFilter; [admin] webapp=null path=/admin/cores params={indexInfo=false&_=1382156365133&wt=json} status=0 QTime=4 
+INFO  - 2013-10-19 13:19:25.217; org.apache.solr.servlet.SolrDispatchFilter; [admin] webapp=null path=/admin/info/system params={_=1382156365186&wt=json} status=0 QTime=25 
+INFO  - 2013-10-19 13:19:25.254; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/admin/file params={file=schema.xml&_=1382156365245&contentType=text/xml;charset%3Dutf-8} status=0 QTime=1 
+INFO  - 2013-10-19 13:22:06.721; org.apache.solr.core.SolrCore; [DIH] webapp=/solr path=/select params={sort=birthdate+asc&fl=id,member_id,member_status_cd,member_name,member_account,birthdate,formalized_datetime,purchase_id,product_id,product_name,product_category_code,product_category_name&start=0&q=member_name:S*+AND+birthdate:[1963-10-19T04:22:06.000Z+TO+*]+AND+formalized_datetime:*+AND+product_name:Glass*&wt=javabin&version=2&rows=1000} hits=0 status=0 QTime=57 
+INFO  - 2013-10-19 14:08:13.322; org.eclipse.jetty.server.Server; Graceful shutdown SocketConnector@0.0.0.0:8983
+INFO  - 2013-10-19 14:08:13.323; org.eclipse.jetty.server.Server; Graceful shutdown o.e.j.w.WebAppContext{/solr,file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/solr-webapp/webapp/},/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/webapps/solr.war
+INFO  - 2013-10-19 14:08:14.325; org.apache.solr.core.CoreContainer; Shutting down CoreContainer instance=408631784
+INFO  - 2013-10-19 14:08:14.326; org.apache.solr.core.SolrCore; [DIH]  CLOSING SolrCore org.apache.solr.core.SolrCore@70981be
+INFO  - 2013-10-19 14:08:14.327; org.apache.solr.update.DirectUpdateHandler2; closing DirectUpdateHandler2{commits=0,autocommits=0,soft autocommits=0,optimizes=0,rollbacks=0,expungeDeletes=0,docsPending=0,adds=0,deletesById=0,deletesByQuery=0,errors=0,cumulative_adds=0,cumulative_deletesById=0,cumulative_deletesByQuery=0,cumulative_errors=0}
+INFO  - 2013-10-19 14:08:14.327; org.apache.solr.update.SolrCoreState; Closing SolrCoreState
+INFO  - 2013-10-19 14:08:14.328; org.apache.solr.update.DefaultSolrCoreState; SolrCoreState ref count has reached 0 - closing IndexWriter
+INFO  - 2013-10-19 14:08:14.328; org.apache.solr.update.DefaultSolrCoreState; closing IndexWriter with IndexWriterCloser
+INFO  - 2013-10-19 14:08:14.331; org.apache.solr.core.SolrCore; [DIH] Closing main searcher on request.
+INFO  - 2013-10-19 14:08:14.333; org.apache.solr.core.CachingDirectoryFactory; Closing NRTCachingDirectoryFactory - 2 directories currently being tracked
+INFO  - 2013-10-19 14:08:14.333; org.apache.solr.core.CachingDirectoryFactory; looking to close /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data [CachedDir<<refCount=0;path=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data;done=false>>]
+INFO  - 2013-10-19 14:08:14.333; org.apache.solr.core.CachingDirectoryFactory; Closing directory: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data
+INFO  - 2013-10-19 14:08:14.334; org.apache.solr.core.CachingDirectoryFactory; looking to close /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index [CachedDir<<refCount=0;path=/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index;done=false>>]
+INFO  - 2013-10-19 14:08:14.334; org.apache.solr.core.CachingDirectoryFactory; Closing directory: /Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/example-dbflute/solr/DIH/data/index
+INFO  - 2013-10-19 14:08:14.336; org.eclipse.jetty.server.handler.ContextHandler; stopped o.e.j.w.WebAppContext{/solr,file:/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/solr-webapp/webapp/},/Users/nishiyama/git/dbflute-solr-example/solr-4.5.0/example/webapps/solr.war

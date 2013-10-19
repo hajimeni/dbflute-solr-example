@@ -1,0 +1,1 @@
+java -Dsolr.solr.home="./example-dbflute/solr/" -jar start.jar
